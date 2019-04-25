@@ -1,11 +1,13 @@
 package com.eryxlabs.fiderides.ui;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.eryxlabs.fiderides.MainActivity;
@@ -23,6 +25,8 @@ public class LoginActivity extends AppCompatActivity {
     private EditText editEmail;
     private EditText editPassword;
     private Button btnLogin;
+    private ProgressDialog progressDialog;
+    private TextView tvMessage;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,32 +35,47 @@ public class LoginActivity extends AppCompatActivity {
 
         getSupportActionBar().hide();
 
+        progressDialog = new ProgressDialog(this);
+        progressDialog.setCancelable(false);
+
         editEmail = findViewById(R.id.editEmail);
         editPassword = findViewById(R.id.editPassword);
         btnLogin = findViewById(R.id.btnLogin);
+        tvMessage = findViewById(R.id.tvMessage);
 
-        btnLogin.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                attemptLogin();
-            }
-        });
+        btnLogin.setOnClickListener(v -> attemptLogin());
+
     }
 
     private void attemptLogin() {
-//        Test login
+        String email = editEmail.getText().toString();
+        String pass = editPassword.getText().toString();
+        if(email.isEmpty() || pass.isEmpty()){
+            showMessage("Empty credentials are not allowed");
+            return;
+        }
+        tvMessage.setVisibility(View.GONE);
+        progressDialog.setMessage("Authenticating user ...");
+        progressDialog.show();
         ApiClient.with(this)
                 .getApiService()
-                .getLoginToken("john.doe@domain.com","passme")
+                .getLoginToken(email,pass)
                 .enqueue(new Callback<UserToken>() {
                     @Override
                     public void onResponse(Call<UserToken> call, Response<UserToken> response) {
-                        showToken(response.body());
+                        progressDialog.dismiss();
+                        if(response.isSuccessful()){
+                            showToken(response.body());
+                        }else{
+                            tvMessage.setText("Sorry, invalid username or password.");
+                            tvMessage.setVisibility(View.VISIBLE);
+                        }
                     }
 
                     @Override
                     public void onFailure(Call<UserToken> call, Throwable t) {
                         showMessage(t.getMessage());
+                        progressDialog.dismiss();
                     }
                 });
     }

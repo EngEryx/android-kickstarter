@@ -3,6 +3,8 @@ package com.eryxlabs.fiderides;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.Toast;
 
 import com.eryxlabs.fiderides.models.UserToken;
@@ -17,15 +19,35 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         if(!Cache.hasAuthToken(this)){
-            Intent i = new Intent(this,LoginActivity.class);
-            i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP|
-                    Intent.FLAG_ACTIVITY_CLEAR_TASK |
-                    Intent.FLAG_ACTIVITY_NEW_TASK);
-            startActivity(i);
-            finish();
+            logout();
         }
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.main_menu,menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+       if(item.getItemId() == R.id.action_logout){
+           Cache.removeAuthToken(this);
+           logout();
+       }
+       return super.onOptionsItemSelected(item);
+    }
+
+    private void logout() {
+        Cache.removeAuthToken(this);
+
+        Intent i = new Intent(this,LoginActivity.class);
+        i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP|
+                Intent.FLAG_ACTIVITY_CLEAR_TASK |
+                Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(i);
+        finish();
+    }
 
     private void showMessage(String authToken) {
         Toast.makeText(this,""+authToken,Toast.LENGTH_SHORT).show();
