@@ -1,12 +1,13 @@
 
 package com.eryxlabs.fiderides.models;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class Ride {
+public class Ride implements Serializable {
 
     @SerializedName("id")
     @Expose
@@ -44,6 +45,19 @@ public class Ride {
     @SerializedName("user")
     @Expose
     private User user;
+
+    @SerializedName("remaining_seats")
+    @Expose
+    private int remaining_seats;
+
+    @SerializedName("has_booked")
+    @Expose
+    private Boolean has_booked;
+
+    @SerializedName("has_paid")
+    @Expose
+    private Boolean has_paid;
+
     @SerializedName("destinations")
     @Expose
     private List<Destination> destinations = new ArrayList<Destination>();
@@ -152,4 +166,27 @@ public class Ride {
         this.destinations = destinations;
     }
 
+    public Boolean getHas_booked() {
+        return has_booked;
+    }
+
+    public void setHas_booked(Boolean has_booked) {
+        this.has_booked = has_booked;
+    }
+
+    public int getRemaining_seats() {
+        return remaining_seats;
+    }
+
+    public void setRemaining_seats(int remaining_seats) {
+        this.remaining_seats = remaining_seats;
+    }
+
+    public Boolean getHas_paid() {
+        return has_paid;
+    }
+
+    public void setHas_paid(Boolean has_paid) {
+        this.has_paid = has_paid;
+    }
 }

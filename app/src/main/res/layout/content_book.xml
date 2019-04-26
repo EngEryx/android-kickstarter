@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context=".ui.BookActivity"
+    tools:showIn="@layout/activity_book">
+
+    <android.support.v7.widget.CardView
+        android:layout_margin="8dp"
+        android:id="@+id/bookCard"
+        android:minHeight="100dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:orientation="vertical"
+            android:padding="16dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:textColor="@android:color/black"
+                android:textSize="19sp"
+                android:text="Step 1#: Choose Destination:"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <Spinner
+                android:layout_marginTop="8dp"
+                android:id="@+id/spin_destination"
+                android:padding="4dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+            </Spinner>
+
+            <TextView
+                android:id="@+id/tvBookStatus"
+                android:visibility="gone"
+                android:textColor="@android:color/black"
+                android:textSize="19sp"
+                android:text="Status: You have booked for this ride."
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <Button
+                android:textAllCaps="false"
+                android:text="Proceed to Pay"
+                android:id="@+id/btnProceed"
+                android:layout_marginTop="8dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+    </android.support.v7.widget.CardView>
+
+    <android.support.v7.widget.CardView
+        android:layout_margin="8dp"
+        android:id="@+id/payCard"
+        android:minHeight="100dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:orientation="vertical"
+            android:padding="16dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:textColor="@android:color/black"
+                android:textSize="19sp"
+                android:text="Step 2# : Pay for your ride"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:textSize="16sp"
+                android:text="Send KSh.200 to Mobile Number 0743169027 via M-PESA to pay for this ride."
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <Button
+                android:textAllCaps="false"
+                android:text="Verify Payment"
+                android:id="@+id/btnVerifyPay"
+                android:layout_marginTop="8dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+    </android.support.v7.widget.CardView>
+
+
+</LinearLayout>

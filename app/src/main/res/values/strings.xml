@@ -14,4 +14,7 @@
         completions."
     </string>
     <string name="action_logout">Logout</string>
+    <string name="title_activity_book">BookActivity</string>
+    <string name="action_refresh">Refresh</string>
+    <string name="title_activity_home">HomeActivity</string>
 </resources>

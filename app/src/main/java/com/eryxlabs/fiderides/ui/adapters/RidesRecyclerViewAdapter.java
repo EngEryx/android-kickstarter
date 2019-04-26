@@ -1,6 +1,7 @@
 package com.eryxlabs.fiderides.ui.adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -11,6 +12,7 @@ import android.widget.TextView;
 
 import com.eryxlabs.fiderides.R;
 import com.eryxlabs.fiderides.models.Ride;
+import com.eryxlabs.fiderides.ui.BookActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,8 +21,9 @@ public class RidesRecyclerViewAdapter extends RecyclerView.Adapter<RidesRecycler
     private List<Ride> rideList;
     public Context context;
 
-    public RidesRecyclerViewAdapter(){
+    public RidesRecyclerViewAdapter(Context ctx){
         this.rideList = new ArrayList<>();
+        this.context = ctx;
     }
 
     @NonNull
@@ -38,11 +41,17 @@ public class RidesRecyclerViewAdapter extends RecyclerView.Adapter<RidesRecycler
         vh.tvDriver.setText(String.format("Ride with %s on #:",ride.getUser().getFirstName()+ride.getUser().getLastName()));
         vh.tvDayTime.setText(ride.getDuration());
         vh.btnParcel.setOnClickListener(v -> {
-
+            Intent intent = new Intent(context, BookActivity.class);
+            intent.putExtra("MYRIDE",ride);
+            intent.putExtra("TYPE","parcel");
+            context.startActivity(intent);
         });
 
         vh.btnBook.setOnClickListener( v -> {
-
+            Intent intent = new Intent(context, BookActivity.class);
+            intent.putExtra("MYRIDE",ride);
+            intent.putExtra("TYPE","book");
+            context.startActivity(intent);
         });
     }
 

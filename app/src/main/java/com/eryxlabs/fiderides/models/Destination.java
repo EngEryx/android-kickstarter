@@ -4,7 +4,9 @@ package com.eryxlabs.fiderides.models;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class Destination {
+import java.io.Serializable;
+
+public class Destination implements Serializable {
 
     @SerializedName("id")
     @Expose

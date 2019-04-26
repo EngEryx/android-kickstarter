@@ -1,5 +1,8 @@
 package com.eryxlabs.fiderides.utils;
 
+import android.content.Intent;
+
+import com.eryxlabs.fiderides.models.BookStatus;
 import com.eryxlabs.fiderides.models.Ride;
 import com.eryxlabs.fiderides.models.UserToken;
 
@@ -25,4 +28,21 @@ public interface ApiService {
     })
     @GET("rides")
     Call<List<Ride>> getRides();
+
+    @Headers({
+            "Accept:application/json",
+            "AUTH:API"
+    })
+    @FormUrlEncoded
+    @POST("rides/ride")
+    Call<BookStatus> bookRide(@Field("destination_id") int destination_id,
+                              @Field("ride_id") int ride_id,
+                              @Field("start_id") int start_id);
+    @Headers({
+            "Accept:application/json",
+            "AUTH:API"
+    })
+    @FormUrlEncoded
+    @POST("rides/verify")
+    Call<BookStatus> confirmRide(@Field("ride_id") int ride_id);
 }

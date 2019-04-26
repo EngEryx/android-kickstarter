@@ -1,20 +1,17 @@
 package com.eryxlabs.fiderides;
 
-import android.app.DialogFragment;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.eryxlabs.fiderides.models.Ride;
-import com.eryxlabs.fiderides.models.UserToken;
 import com.eryxlabs.fiderides.ui.LoginActivity;
 import com.eryxlabs.fiderides.ui.adapters.RidesRecyclerViewAdapter;
 import com.eryxlabs.fiderides.utils.ApiClient;
@@ -22,7 +19,6 @@ import com.eryxlabs.fiderides.utils.Cache;
 import com.eryxlabs.fiderides.utils.EmptyRecyclerView;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
 
 import retrofit2.Call;
@@ -30,7 +26,6 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class MainActivity extends AppCompatActivity {
-
     private ProgressDialog progressDialog;
     private List<Ride> ridesList =  new ArrayList<>();
     private EmptyRecyclerView recyclerView;
@@ -41,11 +36,14 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
 
-        mRidesRecyclerViewAdapter =  new RidesRecyclerViewAdapter();
+        mRidesRecyclerViewAdapter =  new RidesRecyclerViewAdapter(this);
 
         if(!Cache.hasAuthToken(this)){
             logout();
+            return;
         }
 
         progressDialog =  new ProgressDialog(this);
@@ -61,6 +59,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void loadRides() {
+        progressDialog.setMessage("Loading rides ...");
+        progressDialog.show();
         ApiClient.with(this)
                 .getApiService()
                 .getRides()
@@ -100,6 +100,8 @@ public class MainActivity extends AppCompatActivity {
        if(item.getItemId() == R.id.action_logout){
            Cache.removeAuthToken(this);
            logout();
+       }else if(item.getItemId() == R.id.action_refresh){
+           loadRides();
        }
        return super.onOptionsItemSelected(item);
     }
@@ -118,6 +120,5 @@ public class MainActivity extends AppCompatActivity {
     private void showMessage(String authToken) {
         Toast.makeText(this,""+authToken,Toast.LENGTH_SHORT).show();
     }
-
 
 }
