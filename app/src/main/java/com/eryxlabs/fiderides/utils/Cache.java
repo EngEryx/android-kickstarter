@@ -23,7 +23,7 @@ public class Cache {
     }
 
     public static String getAuthToken(Context context) {
-        return getSharedPreferences(context).getString(AUTH_TOKEN , null);
+        return getSharedPreferences(context).getString(AUTH_TOKEN , "");
     }
 
     public static void setAuthToken(Context context, String newValue) {
