@@ -38,7 +38,8 @@ public class RidesRecyclerViewAdapter extends RecyclerView.Adapter<RidesRecycler
         final Ride ride = rideList.get(i);
         vh.tvDetails.setText(ride.getDetails());
         vh.tvPassengers.setText(String.format("Passengers : %s",ride.getPassengers()));
-        vh.tvDriver.setText(String.format("Ride with %s on #:",ride.getUser().getFirstName()+ride.getUser().getLastName()));
+        vh.tvRemain.setText(String.format("Remaining Seats : %s",ride.getRemaining_seats()));
+        vh.tvDriver.setText(String.format("Ride with %s on #:",ride.getUser().getFirstName()+" "+ride.getUser().getLastName()));
         vh.tvDayTime.setText(ride.getDuration());
         vh.btnParcel.setOnClickListener(v -> {
             Intent intent = new Intent(context, BookActivity.class);
@@ -72,6 +73,7 @@ public class RidesRecyclerViewAdapter extends RecyclerView.Adapter<RidesRecycler
         public TextView tvDetails;
         public TextView tvDayTime;
         public TextView tvPassengers;
+        public TextView tvRemain;
         public TextView tvDriver;
         public Button btnBook;
         public Button btnParcel;
@@ -79,6 +81,7 @@ public class RidesRecyclerViewAdapter extends RecyclerView.Adapter<RidesRecycler
             super(v);
             tvDayTime = v.findViewById(R.id.tvDayTime);
             tvPassengers = v.findViewById(R.id.tvPassengers);
+            tvRemain = v.findViewById(R.id.tvRemain);
             tvDetails = v.findViewById(R.id.tvDetails);
             tvDriver = v.findViewById(R.id.tvDriver);
             btnBook = v.findViewById(R.id.btnBook);

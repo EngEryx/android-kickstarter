@@ -23,18 +23,18 @@ public class ApiClient {
     }
 
     Retrofit getRetrofitClient(){
+
         return new Retrofit.Builder()
-                .baseUrl("http://10.1.0.168/fiderides/public/api/v1/")
+                .baseUrl("http://10.1.0.228/fiderides/public/api/v1/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .client(getOkHttpClient())
                 .build();
-
     }
 
     private OkHttpClient getOkHttpClient(){
             OkHttpClient.Builder httpClientBuilder = new OkHttpClient.Builder();
 
-            if (BuildConfig.DEBUG) {
+            if (BuildConfig.DEBUG){
                 httpClientBuilder.addInterceptor(new HttpLoggingInterceptor());
                 if(ctx != null){
                     httpClientBuilder.addInterceptor(new ChuckInterceptor(ctx));
