@@ -177,7 +177,7 @@ public class BookActivity extends AppCompatActivity {
             destinations.add(String.format("%s - KSh.%s",destination.getDestination(),destination.getAmount()));
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(
                 this,
-                android.R.layout.simple_spinner_item,
+                R.layout.spinner_ride_row,
                 destinations
         );
         spinner.setAdapter(adapter);

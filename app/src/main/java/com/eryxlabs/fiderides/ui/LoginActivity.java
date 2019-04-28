@@ -65,7 +65,7 @@ public class LoginActivity extends AppCompatActivity {
                         if(response.isSuccessful()){
                             showToken(response.body());
                         }else{
-                            tvMessage.setText("Sorry, invalid username or password.");
+                            tvMessage.setText("Sorry, invalid passenger username or password.");
                             tvMessage.setVisibility(View.VISIBLE);
                         }
                     }
@@ -82,7 +82,6 @@ public class LoginActivity extends AppCompatActivity {
     private void showToken(UserToken body) {
         Cache.setAuthToken(this,body.authToken);
         if(Cache.hasAuthToken(this)){
-//            showMessage(Cache.getAuthToken(this));
             Cache.setAuthToken(this,body.authToken);
             Intent i = new Intent(this, MainActivity.class);
             i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP|

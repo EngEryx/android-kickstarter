@@ -61,7 +61,15 @@
                 android:text="Passengers: 9"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
+            <TextView
+                android:id="@+id/tvRemain"
+                android:layout_weight="1"
+                android:layout_margin="4dp"
+                android:text="Remaining: 9"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
             <Button
+                android:visibility="gone"
                 android:id="@+id/btnParcel"
                 android:textAllCaps="false"
                 android:text="Parcel"
