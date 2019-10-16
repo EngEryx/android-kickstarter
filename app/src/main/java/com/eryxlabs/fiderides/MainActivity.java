@@ -7,17 +7,13 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.eryxlabs.fiderides.ui.LoginActivity;
 import com.eryxlabs.fiderides.utils.Cache;
-import com.eryxlabs.fiderides.utils.EmptyRecyclerView;
 
 public class MainActivity extends AppCompatActivity {
     private ProgressDialog progressDialog;
-    private EmptyRecyclerView recyclerView;
-    private LinearLayout emptyView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,9 +29,6 @@ public class MainActivity extends AppCompatActivity {
 
         progressDialog =  new ProgressDialog(this);
         progressDialog.setCancelable(false);
-
-        recyclerView =  findViewById(R.id.rides_recycler_view);
-        emptyView = findViewById(R.id.empty_recycler_view);
     }
 
     @Override
