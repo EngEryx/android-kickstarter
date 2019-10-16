@@ -38,6 +38,8 @@ public class MainActivity extends AppCompatActivity {
             return;
         }
 
+        initUser();
+
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
         // Passing each menu ID as a set of Ids because each
@@ -83,5 +85,8 @@ public class MainActivity extends AppCompatActivity {
                 Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(i);
         finish();
+    }
+
+    private void initUser() {
     }
 }

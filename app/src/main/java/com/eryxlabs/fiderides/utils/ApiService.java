@@ -1,5 +1,6 @@
 package com.eryxlabs.fiderides.utils;
 
+import com.eryxlabs.fiderides.models.User;
 import com.eryxlabs.fiderides.models.UserToken;
 
 import java.util.List;
@@ -16,4 +17,7 @@ public interface ApiService {
     @FormUrlEncoded
     @POST("login")
     Call<UserToken> getLoginToken(@Field("username") String username, @Field("password") String password, @Field("login_type") int login_type);
+
+    @GET("user")
+    Call<User>getUser();
 }
