@@ -29,6 +29,7 @@ public class AttendanceFragment extends Fragment {
                 textView.setText(s);
             }
         });
+
         return root;
     }
 }

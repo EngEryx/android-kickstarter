@@ -35,4 +35,6 @@
     <string name="menu_assignment">Home learning Activitiies</string>
     <string name="menu_attendance">Class Attendance</string>
     <string name="menu_travel">Travel Attendance</string>
+    <string name="look_for">Chill, we\'re looking for them...</string>
+    <string name="no_classes_yet">No Classes Yet</string>
 </resources>
