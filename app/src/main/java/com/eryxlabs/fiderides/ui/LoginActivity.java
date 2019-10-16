@@ -80,7 +80,7 @@ public class LoginActivity extends AppCompatActivity {
 
 
     private void showToken(UserToken body) {
-        Cache.setAuthToken(this,body.authToken);
+        Cache.setAuthToken(this, body.authToken);
         if(Cache.hasAuthToken(this)){
             Cache.setAuthToken(this,body.authToken);
             Intent i = new Intent(this, MainActivity.class);

@@ -2,11 +2,7 @@ package com.eryxlabs.fiderides;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.text.TextUtils;
 import android.view.MenuItem;
-import android.view.View;
 
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
@@ -23,7 +19,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.eryxlabs.fiderides.models.User;
-import com.eryxlabs.fiderides.models.UserToken;
 import com.eryxlabs.fiderides.ui.LoginActivity;
 import com.eryxlabs.fiderides.utils.ApiClient;
 import com.eryxlabs.fiderides.utils.Cache;
@@ -50,7 +45,9 @@ public class MainActivity extends AppCompatActivity {
             return;
         }
 
-        initUser();
+//        mUserName = findViewById(R.id.navigation_user_name);
+//        mUserEmail = findViewById(R.id.navigation_user_email);
+//        initUser();
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
@@ -100,8 +97,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void initUser() {
-        mUserName = findViewById(R.id.navigation_user_name);
-        mUserEmail = findViewById(R.id.navigation_user_email);
         ApiClient.with(this)
                 .getApiService()
                 .getUser()
@@ -109,11 +104,9 @@ public class MainActivity extends AppCompatActivity {
 
                     @Override
                     public void onResponse(Call<User> call, Response<User> response) {
-                        User user = response.body();
-                        if (null != user.getFullName() && !TextUtils.isEmpty(user.getFullName()))
-                            mUserName.setText(user.getFullName());
-                        if (null != user.getEmail() && !TextUtils.isEmpty(user.getEmail()))
-                            mUserEmail.setText(user.getEmail());
+                        if(response.isSuccessful()){
+                            showUser(response.body());
+                        }
                     }
 
                     @Override
@@ -121,6 +114,11 @@ public class MainActivity extends AppCompatActivity {
                         showMessage(t.getMessage());
                     }
                 });
+    }
+
+    private void showUser(User user) {
+        mUserName.setText(user.getFullName());
+        mUserEmail.setText(user.getEmail());
     }
 
     private void showMessage(String message) {

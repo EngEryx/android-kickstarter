@@ -18,6 +18,10 @@ public interface ApiService {
     @POST("login")
     Call<UserToken> getLoginToken(@Field("username") String username, @Field("password") String password, @Field("login_type") int login_type);
 
+    @Headers({
+            "Accept:application/json",
+            "AUTH:API"
+    })
     @GET("user")
     Call<User>getUser();
 }
