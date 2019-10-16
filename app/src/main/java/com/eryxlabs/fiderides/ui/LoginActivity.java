@@ -57,7 +57,7 @@ public class LoginActivity extends AppCompatActivity {
         progressDialog.show();
         ApiClient.with(this)
                 .getApiService()
-                .getLoginToken(email,pass)
+                .getLoginToken(email,pass, 1)
                 .enqueue(new Callback<UserToken>() {
                     @Override
                     public void onResponse(Call<UserToken> call, Response<UserToken> response) {

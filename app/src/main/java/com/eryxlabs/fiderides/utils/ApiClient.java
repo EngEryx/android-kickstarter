@@ -25,7 +25,7 @@ public class ApiClient {
     Retrofit getRetrofitClient(){
 
         return new Retrofit.Builder()
-                .baseUrl("http://10.1.0.228/fiderides/public/api/v1/")
+                .baseUrl("http://192.168.43.243/sims/two/shuleyetu/public/api/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .client(getOkHttpClient())
                 .build();
