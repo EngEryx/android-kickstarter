@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.text.TextUtils;
 import android.view.MenuItem;
 import android.view.View;
 
@@ -18,13 +19,24 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
+import android.widget.TextView;
+import android.widget.Toast;
 
+import com.eryxlabs.fiderides.models.User;
+import com.eryxlabs.fiderides.models.UserToken;
 import com.eryxlabs.fiderides.ui.LoginActivity;
+import com.eryxlabs.fiderides.utils.ApiClient;
 import com.eryxlabs.fiderides.utils.Cache;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class MainActivity extends AppCompatActivity {
 
     private AppBarConfiguration mAppBarConfiguration;
+    private TextView mUserName;
+    private TextView mUserEmail;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -88,5 +100,31 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void initUser() {
+        mUserName = findViewById(R.id.navigation_user_name);
+        mUserEmail = findViewById(R.id.navigation_user_email);
+        ApiClient.with(this)
+                .getApiService()
+                .getUser()
+                .enqueue(new Callback<User>() {
+
+                    @Override
+                    public void onResponse(Call<User> call, Response<User> response) {
+                        User user = response.body();
+                        if (null != user.getFullName() && !TextUtils.isEmpty(user.getFullName()))
+                            mUserName.setText(user.getFullName());
+                        if (null != user.getEmail() && !TextUtils.isEmpty(user.getEmail()))
+                            mUserEmail.setText(user.getEmail());
+                    }
+
+                    @Override
+                    public void onFailure(Call<User> call, Throwable t) {
+                        showMessage(t.getMessage());
+                    }
+                });
     }
+
+    private void showMessage(String message) {
+        Toast.makeText(this,""+message, Toast.LENGTH_SHORT).show();
+    }
+
 }

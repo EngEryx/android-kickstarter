@@ -11,9 +11,6 @@ public class User implements Serializable {
     @SerializedName("id")
     @Expose
     private int id;
-    @SerializedName("uuid")
-    @Expose
-    private String uuid;
     @SerializedName("first_name")
     @Expose
     private String firstName;
@@ -72,14 +69,6 @@ public class User implements Serializable {
 
     public void setId(int id) {
         this.id = id;
-    }
-
-    public String getUuid() {
-        return uuid;
-    }
-
-    public void setUuid(String uuid) {
-        this.uuid = uuid;
     }
 
     public String getFirstName() {
