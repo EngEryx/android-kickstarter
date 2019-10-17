@@ -31,5 +31,5 @@ public interface ApiService {
             "AUTH:API"
     })
     @GET("teacher/attendance/class-list")
-    Call<Stream>getStreams();
+    Call<List<Stream>>getStreams();
 }
