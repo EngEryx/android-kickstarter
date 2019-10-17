@@ -1,5 +1,7 @@
 package com.eryxlabs.fiderides.ui.assessment;
 
+import android.arch.lifecycle.Observer;
+import android.arch.lifecycle.ViewModelProviders;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -13,8 +15,11 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.eryxlabs.fiderides.R;
+import com.eryxlabs.fiderides.models.Assessment;
 import com.eryxlabs.fiderides.ui.assessment.adapters.AssessmentsAdapter;
 import com.eryxlabs.fiderides.ui.assessment.dialogs.AddAssessment;
+
+import java.util.List;
 
 public class AssessmentFragment extends Fragment implements AssessmentsAdapter.AssesmentAdapterInterface {
 
@@ -22,6 +27,7 @@ public class AssessmentFragment extends Fragment implements AssessmentsAdapter.A
     private RecyclerView recyclerView;
     private AppCompatButton add_button;
 
+    AssessmentViewModel assessmentViewModel;
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_assessment, container, false);
@@ -31,7 +37,10 @@ public class AssessmentFragment extends Fragment implements AssessmentsAdapter.A
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        assessmentViewModel= ViewModelProviders.of(this).get(AssessmentViewModel.class);
 
+
+        assessmentViewModel.getAllAssessmentsOnline();
         recyclerView = view.findViewById(R.id.list);
         add_button = view.findViewById(R.id.add_button);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
@@ -43,6 +52,16 @@ public class AssessmentFragment extends Fragment implements AssessmentsAdapter.A
 
             new AddAssessment().show(getChildFragmentManager(),"Add assessment");
 
+        });
+
+        assessmentViewModel.assessments.observe(this, new Observer<List<Assessment>>() {
+            @Override
+            public void onChanged(@Nullable List<Assessment> assessments) {
+                if (assessments!=null){
+                    assessmentsAdapter.updateData(assessments);
+
+                }
+            }
         });
 
     }

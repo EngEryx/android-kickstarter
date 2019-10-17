@@ -50,8 +50,6 @@ public class Assignment {
 
 
 
-
-
     @SerializedName("subject")
     @Expose
     private Subject subject;
