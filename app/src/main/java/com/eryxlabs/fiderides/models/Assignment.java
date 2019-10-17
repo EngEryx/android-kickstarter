@@ -48,6 +48,29 @@ public class Assignment {
     private String updated_at;
 
 
+
+
+
+
+    @SerializedName("subject")
+    @Expose
+    private Subject subject;
+
+    @SerializedName("assignment_activity")
+    @Expose
+    private AssignmentActivity assignmentActivity;
+
+    @SerializedName("stream")
+    @Expose
+    private Stream stream;
+
+
+
+    @SerializedName("stream.class_level")
+    @Expose
+    private ClassLevel classLevel;
+
+
     public int getId() {
         return id;
     }

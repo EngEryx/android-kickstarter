@@ -3,9 +3,11 @@ package com.eryxlabs.fiderides.ui.assignment;
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.eryxlabs.fiderides.R;
 import com.eryxlabs.fiderides.models.Assignment;
 
 import java.util.ArrayList;
@@ -32,7 +34,8 @@ public class AssignmentAdapter extends RecyclerView.Adapter<AssignmentAdapter.As
     @NonNull
     @Override
     public AssignmentViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
-        return null;
+        View item_view = LayoutInflater.from(context).inflate(R.layout.single_assignment_adapter,viewGroup,false);
+        return new AssignmentViewHolder(item_view);
     }
 
     @Override
