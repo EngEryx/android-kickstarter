@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.LinearLayoutManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -34,6 +35,14 @@ public class AttendanceFragment extends Fragment {
         attendanceViewModel = ViewModelProviders.of(this).get(AttendanceViewModel.class);
         View root = inflater.inflate(R.layout.fragment_attendance, container, false);
         textView = root.findViewById(R.id.text_attendance);
+        progressDialog =  new ProgressDialog(getContext());
+        progressDialog.setCancelable(false);
+
+        recyclerView =  root.findViewById(R.id.streams_recycler_view);
+        emptyView = root.findViewById(R.id.streams_empty_recycler_view);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        recyclerView.setEmptyView(emptyView);
+        recyclerView.setAdapter(mStreamsRecyclerViewAdapter);
 
         attendanceViewModel.getText().observe(this, new Observer<String>() {
             @Override

@@ -10,12 +10,12 @@
     android:orientation="vertical">
 
     <com.eryxlabs.fiderides.utils.EmptyRecyclerView
-        android:id="@+id/classes_recycler_view"
+        android:id="@+id/streams_recycler_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
 
     <LinearLayout
-        android:id="@+id/empty_recycler_view"
+        android:id="@+id/streams_empty_recycler_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="center_vertical|fill_horizontal"
