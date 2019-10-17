@@ -50,4 +50,12 @@ public interface ApiService {
     @FormUrlEncoded
     @POST("teacher/attendance/students")
     Call<List<StudentAttendance>>getStudentsAttendance(@Field("stream_id") int stream_id, @Field("attendance_shift_id") int attendance_shift_id);
+
+    @Headers({
+            "Accept:application/json",
+            "AUTH:API"
+    })
+    @FormUrlEncoded
+    @POST("teacher/attendance/save")
+    Call<Object> saveAttendance(List<StudentAttendance> studentAttendanceList);
 }

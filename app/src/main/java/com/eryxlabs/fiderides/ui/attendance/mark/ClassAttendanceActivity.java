@@ -36,7 +36,7 @@ public class ClassAttendanceActivity extends AppCompatActivity {
 
     private Stream myStream = null;
     private List<Shift> mShifts = null;
-    private static List<StudentAttendance> studentAttendanceList =  new ArrayList<>();
+    private static List<StudentAttendance> studentAttendanceList = new ArrayList<>();
     private Spinner mSpinner;
     private ProgressDialog progressDialog;
     private EmptyRecyclerView recyclerView;
@@ -91,8 +91,9 @@ public class ClassAttendanceActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Posted Attendance data", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                studentAttendanceList.clear();
+                studentAttendanceList.addAll(mStreamStudentsRecyclerViewAdapter.getStudentsList());
+                sendAttendance();
             }
         });
     }
@@ -119,6 +120,17 @@ public class ClassAttendanceActivity extends AppCompatActivity {
                         showMessage(t.getMessage());
                         progressDialog.dismiss();
                     }
+                });
+    }
+
+    private void sendAttendance(){
+        progressDialog.setMessage("Getting students ...");
+        progressDialog.show();
+        ApiClient.with(this)
+                .getApiService()
+                .saveAttendance(studentAttendanceList)
+                .enqueue(new Callback<>() {
+
                 });
     }
 
