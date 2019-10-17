@@ -124,14 +124,27 @@ public class ClassAttendanceActivity extends AppCompatActivity {
     }
 
     private void sendAttendance(){
-//        progressDialog.setMessage("Getting students ...");
-//        progressDialog.show();
-//        ApiClient.with(this)
-//                .getApiService()
-//                .saveAttendance(studentAttendanceList)
-//                .enqueue(new Callback<>() {
-//
-//                });
+        progressDialog.setMessage("Getting students ...");
+        progressDialog.show();
+        ApiClient.with(this)
+                .getApiService()
+                .saveAttendance(studentAttendanceList)
+                .enqueue(new Callback<Object>() {
+
+                    @Override
+                    public void onResponse(Call<Object> call, Response<Object> response) {
+                        if (response.isSuccessful()){
+                            progressDialog.dismiss();
+                            showMessage("Attendance Saved");
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<Object> call, Throwable t) {
+                        showMessage(t.getMessage());
+                        progressDialog.dismiss();
+                    }
+                });
     }
 
     private void showStudentAttendance(List<StudentAttendance> studentAttendances) {

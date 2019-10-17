@@ -62,9 +62,9 @@ public class MainActivity extends AppCompatActivity {
         NavigationUI.setupWithNavController(navigationView, navController);
 
 
-        View headerView=navigationView.getHeaderView(0);
-          mUserName=(TextView) headerView.findViewById(R.id.navigation_user_name);
-        mUserEmail=(TextView)headerView.findViewById(R.id.navigation_user_email);
+        View headerView = navigationView.getHeaderView(0);
+        mUserName = headerView.findViewById(R.id.navigation_user_name);
+        mUserEmail = headerView.findViewById(R.id.navigation_user_email);
         initUser();
 
     }

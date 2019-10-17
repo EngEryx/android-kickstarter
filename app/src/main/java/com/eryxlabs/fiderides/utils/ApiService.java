@@ -8,6 +8,7 @@ import com.eryxlabs.fiderides.models.UserToken;
 
 import java.util.List;
 
+import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
@@ -57,5 +58,5 @@ public interface ApiService {
     })
     @FormUrlEncoded
     @POST("teacher/attendance/save")
-    Call<Object> saveAttendance(List<StudentAttendance> studentAttendanceList);
+    Call<Success> saveAttendance(List<StudentAttendance> studentAttendanceList);
 }
