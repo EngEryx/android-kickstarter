@@ -37,6 +37,9 @@ public class AttendanceFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         attendanceViewModel = ViewModelProviders.of(this).get(AttendanceViewModel.class);
         View root = inflater.inflate(R.layout.fragment_attendance, container, false);
+
+        mStreamsRecyclerViewAdapter =  new StreamsRecyclerViewAdapter(getContext());
+
         progressDialog =  new ProgressDialog(getContext());
         progressDialog.setCancelable(false);
 
@@ -52,7 +55,7 @@ public class AttendanceFragment extends Fragment {
     }
 
     private void loadStreams() {
-        progressDialog.setMessage("Loading rides ...");
+        progressDialog.setMessage("Loading streams ...");
         progressDialog.show();
         ApiClient.with(getContext())
                 .getApiService()
