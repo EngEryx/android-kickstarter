@@ -1,6 +1,8 @@
 package com.eryxlabs.fiderides.utils;
 
+import com.eryxlabs.fiderides.models.Shift;
 import com.eryxlabs.fiderides.models.Stream;
+import com.eryxlabs.fiderides.models.StudentAttendance;
 import com.eryxlabs.fiderides.models.User;
 import com.eryxlabs.fiderides.models.UserToken;
 
@@ -30,6 +32,21 @@ public interface ApiService {
             "Accept:application/json",
             "AUTH:API"
     })
-    @GET("teacher/attendance/class-list")
+    @GET("teacher/attendance/streams")
     Call<List<Stream>>getStreams();
+
+    @Headers({
+            "Accept:application/json",
+            "AUTH:API"
+    })
+    @GET("teacher/attendance/shifts")
+    Call<List<Shift>>getShifts();
+
+    @Headers({
+            "Accept:application/json",
+            "AUTH:API"
+    })
+    @FormUrlEncoded
+    @POST("teacher/attendance/students/")
+    Call<List<StudentAttendance>>getStudentsAttendance(@Field("stream_id") int stream_id, @Field("attendance_shift_id") int attendance_shift_id);
 }

@@ -9,11 +9,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.eryxlabs.fiderides.R;
 import com.eryxlabs.fiderides.models.Stream;
-import com.eryxlabs.fiderides.ui.attendance.mark.MarkAttendanceActivity;
+import com.eryxlabs.fiderides.ui.attendance.mark.ClassAttendanceActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -40,8 +39,8 @@ public class StreamsRecyclerViewAdapter extends RecyclerView.Adapter<StreamsRecy
         viewHolder.tvStudents.setText(String.format("Students : %s", stream.getStudentsCount()));
         viewHolder.tvTeacher.setText(String.format("Class moderator : %s", stream.getTeacher().getFullName()));
         viewHolder.markAttendance.setOnClickListener(v -> {
-            Intent intent = new Intent(context, MarkAttendanceActivity.class);
-            intent.putExtra("stream", stream);
+            Intent intent = new Intent(context, ClassAttendanceActivity.class);
+            intent.putExtra("STREAM", stream);
             context.startActivity(intent);
         });
     }
