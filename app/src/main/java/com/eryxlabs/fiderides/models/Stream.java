@@ -23,6 +23,9 @@ public class Stream implements Serializable {
     @SerializedName("deleted_at")
     @Expose
     private Object deletedAt;
+
+    private Teacher teacher;
+
     public int getId() {
         return id;
     }
