@@ -17,10 +17,8 @@ public class AttendanceFragment extends Fragment {
 
     private AttendanceViewModel attendanceViewModel;
 
-    public View onCreateView(@NonNull LayoutInflater inflater,
-                             ViewGroup container, Bundle savedInstanceState) {
-        attendanceViewModel =
-                ViewModelProviders.of(this).get(AttendanceViewModel.class);
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        attendanceViewModel = ViewModelProviders.of(this).get(AttendanceViewModel.class);
         View root = inflater.inflate(R.layout.fragment_attendance, container, false);
         final TextView textView = root.findViewById(R.id.text_attendance);
         attendanceViewModel.getText().observe(this, new Observer<String>() {
