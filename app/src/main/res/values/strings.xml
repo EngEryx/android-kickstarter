@@ -134,4 +134,9 @@
     <string name="half_present">Half Present</string>
     <string name="present">Present</string>
     <string name="choose_attendance_shift_first">Make sure you select an attendance shift first</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="menu_asessment">Assessment</string>
+    <string name="menu_assessments">Assessments</string>
 </resources>
