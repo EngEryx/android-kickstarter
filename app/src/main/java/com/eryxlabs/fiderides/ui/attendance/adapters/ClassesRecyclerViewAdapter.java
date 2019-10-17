@@ -33,10 +33,10 @@ public class ClassesRecyclerViewAdapter extends RecyclerView.Adapter<ClassesRecy
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder viewHolder, int i) {
-        final Stream classLevel = classesList.get(i);
-        viewHolder.tvDetails.setText(classLevel.getId());
-        viewHolder.tvStudents.setText(String.format("Students : %s",classLevel.getId()));
-//        viewHolder.tvTeacher.setText(String.format("Class moderator :", classLevel.getUser().getFirstName()+" "+ ride.getUser().getLastName()));
+        final Stream stream = classesList.get(i);
+        viewHolder.tvDetails.setText(stream.getId());
+        viewHolder.tvStudents.setText(String.format("Students : %s", stream.getId()));
+        viewHolder.tvTeacher.setText(String.format("Class moderator : %s", stream.getTeacher().getFullName()));
         viewHolder.markAttendance.setOnClickListener(v -> {
             Toast.makeText(context, "Todo: Mark Attendance", Toast.LENGTH_SHORT).show();
         });
