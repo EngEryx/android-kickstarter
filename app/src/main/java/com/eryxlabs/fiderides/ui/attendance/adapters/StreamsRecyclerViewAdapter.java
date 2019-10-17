@@ -1,6 +1,7 @@
 package com.eryxlabs.fiderides.ui.attendance.adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -12,6 +13,7 @@ import android.widget.Toast;
 
 import com.eryxlabs.fiderides.R;
 import com.eryxlabs.fiderides.models.Stream;
+import com.eryxlabs.fiderides.ui.attendance.mark.MarkAttendanceActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -38,7 +40,9 @@ public class StreamsRecyclerViewAdapter extends RecyclerView.Adapter<StreamsRecy
         viewHolder.tvStudents.setText(String.format("Students : %s", stream.getStudentsCount()));
         viewHolder.tvTeacher.setText(String.format("Class moderator : %s", stream.getTeacher().getFullName()));
         viewHolder.markAttendance.setOnClickListener(v -> {
-            Toast.makeText(context, "Todo: mark Attendance", Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(context, MarkAttendanceActivity.class);
+            intent.putExtra("stream", stream);
+            context.startActivity(intent);
         });
     }
 
