@@ -11,20 +11,32 @@ public class Stream implements Serializable {
     @SerializedName("id")
     @Expose
     private int id;
-    @SerializedName("person_id")
+    
+    @SerializedName("students_count")
+    @Expose
+    private int studentsCount;
+    
+    @SerializedName("people_id")
     @Expose
     private Object personId;
+
+    @SerializedName("class_stream")
+    @Expose
+    private String classStream;
+    
     @SerializedName("created_at")
     @Expose
     private String createdAt;
+    
     @SerializedName("updated_at")
     @Expose
     private String updatedAt;
+    
     @SerializedName("deleted_at")
     @Expose
     private Object deletedAt;
-
-    @SerializedName("teacher")
+    
+    @SerializedName("class_teacher")
     @Expose
     private Teacher teacher;
 
@@ -36,12 +48,28 @@ public class Stream implements Serializable {
         this.id = id;
     }
 
+    public int getStudentsCount() {
+        return studentsCount;
+    }
+
+    public void setStudentsCount(int students_count) {
+        this.studentsCount = students_count;
+    }
+
     public Object getPersonId() {
         return personId;
     }
 
     public void setPersonId(Object personId) {
         this.personId = personId;
+    }
+
+    public String getClassStream() {
+        return classStream;
+    }
+
+    public void setClassStream(String classStream) {
+        this.classStream = classStream;
     }
 
     public String getCreatedAt() {

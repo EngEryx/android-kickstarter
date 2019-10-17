@@ -16,12 +16,12 @@ import com.eryxlabs.fiderides.models.Stream;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ClassesRecyclerViewAdapter extends RecyclerView.Adapter<ClassesRecyclerViewAdapter.ViewHolder> {
-    private List<Stream> classesList;
+public class StreamsRecyclerViewAdapter extends RecyclerView.Adapter<StreamsRecyclerViewAdapter.ViewHolder> {
+    private List<Stream> streamsList;
     public Context context;
 
-    public ClassesRecyclerViewAdapter(Context ctx){
-        this.classesList = new ArrayList<>();
+    public StreamsRecyclerViewAdapter(Context ctx){
+        this.streamsList = new ArrayList<>();
         this.context = ctx;
     }
     @NonNull
@@ -33,9 +33,9 @@ public class ClassesRecyclerViewAdapter extends RecyclerView.Adapter<ClassesRecy
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder viewHolder, int i) {
-        final Stream stream = classesList.get(i);
-        viewHolder.tvDetails.setText(stream.getId());
-        viewHolder.tvStudents.setText(String.format("Students : %s", stream.getId()));
+        final Stream stream = streamsList.get(i);
+        viewHolder.tvDetails.setText(stream.getClassStream());
+        viewHolder.tvStudents.setText(String.format("Students : %s", stream.getStudentsCount()));
         viewHolder.tvTeacher.setText(String.format("Class moderator : %s", stream.getTeacher().getFullName()));
         viewHolder.markAttendance.setOnClickListener(v -> {
             Toast.makeText(context, "Todo: Mark Attendance", Toast.LENGTH_SHORT).show();
@@ -44,7 +44,7 @@ public class ClassesRecyclerViewAdapter extends RecyclerView.Adapter<ClassesRecy
 
     @Override
     public int getItemCount() {
-        return classesList.size();
+        return streamsList.size();
     }
 
     class ViewHolder extends RecyclerView.ViewHolder {
@@ -61,9 +61,9 @@ public class ClassesRecyclerViewAdapter extends RecyclerView.Adapter<ClassesRecy
         }
     }
 
-    /*public void setData(List<Ride> rides) {
-        rideList.clear();
-        rideList.addAll(rides);
+    public void setData(List<Stream> streams) {
+        streamsList.clear();
+        streamsList.addAll(streams);
         notifyDataSetChanged();
-    }*/
+    }
 }

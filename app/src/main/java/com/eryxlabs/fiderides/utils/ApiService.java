@@ -1,5 +1,6 @@
 package com.eryxlabs.fiderides.utils;
 
+import com.eryxlabs.fiderides.models.Stream;
 import com.eryxlabs.fiderides.models.User;
 import com.eryxlabs.fiderides.models.UserToken;
 
@@ -24,4 +25,11 @@ public interface ApiService {
     })
     @GET("user")
     Call<User>getUser();
+
+    @Headers({
+            "Accept:application/json",
+            "AUTH:API"
+    })
+    @GET("teacher/attendance/class-list")
+    Call<Stream>getStreams();
 }
