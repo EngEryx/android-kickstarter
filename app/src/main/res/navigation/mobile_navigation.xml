@@ -2,8 +2,8 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/nav_home">
+    app:startDestination="@id/nav_home"
+    android:id="@+id/mobile_navigation">
 
     <fragment
         android:id="@+id/nav_home"
@@ -16,6 +16,13 @@
         android:name="com.eryxlabs.fiderides.ui.assignment.AssignmentFragment"
         android:label="@string/menu_assignment"
         tools:layout="@layout/fragment_assignment" />
+
+
+    <fragment
+        android:id="@+id/nav_assessment"
+        android:name="com.eryxlabs.fiderides.ui.assessment.AssessmentFragment"
+        android:label="@string/menu_asessment"
+        tools:layout="@layout/fragment_assessment" />
 
     <fragment
         android:id="@+id/nav_attendance"
