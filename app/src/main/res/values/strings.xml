@@ -37,4 +37,6 @@
     <string name="menu_travel">Travel Attendance</string>
     <string name="look_for">Chill, we\'re looking for them...</string>
     <string name="no_classes_yet">No Classes Yet</string>
+    <string name="mark_attendance">Mark Attendance</string>
+    <string name="students_0">Students: 0</string>
 </resources>

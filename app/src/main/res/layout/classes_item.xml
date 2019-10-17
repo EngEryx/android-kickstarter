@@ -14,16 +14,16 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <ImageView
-                android:src="@drawable/ride_item_icon"
+                android:src="@drawable/ic_people_black_72dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
             <TextView
-                android:id="@+id/tvDetails"
+                android:id="@+id/tv_class_details"
                 android:layout_gravity="center_vertical"
                 android:textColor="@color/primary_text"
                 android:textSize="16sp"
                 android:padding="4dp"
-                android:text="Nchiru - Nyeri"
+                android:text="8B"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
         </LinearLayout>
@@ -31,23 +31,13 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <TextView
-                android:id="@+id/tvDriver"
+                android:id="@+id/tv_class_teacher"
                 android:layout_weight="1"
                 android:layout_margin="4dp"
                 android:padding="4dp"
                 android:textColor="@color/primary_text"
                 android:textSize="14sp"
-                android:text="Ride with Stephen Kiarie #:"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-            <TextView
-                android:id="@+id/tvDayTime"
-                android:layout_weight="1"
-                android:layout_margin="4dp"
-                android:padding="4dp"
-                android:textColor="@color/primary_text"
-                android:textSize="18sp"
-                android:text="Mar 26, 08:00 - 09:00"
+                android:text="Class Moderator: Teacher Doe"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
         </LinearLayout>
@@ -55,32 +45,16 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <TextView
-                android:id="@+id/tvPassengers"
+                android:id="@+id/tv_class_students_count"
                 android:layout_weight="1"
                 android:layout_margin="4dp"
-                android:text="Passengers: 9"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-            <TextView
-                android:id="@+id/tvRemain"
-                android:layout_weight="1"
-                android:layout_margin="4dp"
-                android:text="Remaining: 9"
+                android:text="@string/students_0"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
             <Button
-                android:visibility="gone"
-                android:id="@+id/btnParcel"
+                android:id="@+id/btn_mark_attendance"
                 android:textAllCaps="false"
-                android:text="Parcel"
-                android:layout_margin="4dp"
-                android:layout_weight="1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-            <Button
-                android:id="@+id/btnBook"
-                android:textAllCaps="false"
-                android:text="Book"
+                android:text="@string/mark_attendance"
                 android:layout_margin="4dp"
                 android:layout_weight="1"
                 android:layout_width="wrap_content"
