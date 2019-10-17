@@ -27,7 +27,7 @@ public class StreamsRecyclerViewAdapter extends RecyclerView.Adapter<StreamsRecy
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
-        View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.classes_item, viewGroup,false);
+        View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.stream_item, viewGroup,false);
         return new ViewHolder(view);
     }
 
@@ -38,7 +38,7 @@ public class StreamsRecyclerViewAdapter extends RecyclerView.Adapter<StreamsRecy
         viewHolder.tvStudents.setText(String.format("Students : %s", stream.getStudentsCount()));
         viewHolder.tvTeacher.setText(String.format("Class moderator : %s", stream.getTeacher().getFullName()));
         viewHolder.markAttendance.setOnClickListener(v -> {
-            Toast.makeText(context, "Todo: Mark Attendance", Toast.LENGTH_SHORT).show();
+            Toast.makeText(context, "Todo: mark Attendance", Toast.LENGTH_SHORT).show();
         });
     }
 
