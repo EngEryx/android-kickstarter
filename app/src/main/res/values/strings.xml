@@ -133,4 +133,5 @@
     <string name="absent">Absent</string>
     <string name="half_present">Half Present</string>
     <string name="present">Present</string>
+    <string name="choose_attendance_shift_first">Make sure you select an attendance shift first</string>
 </resources>

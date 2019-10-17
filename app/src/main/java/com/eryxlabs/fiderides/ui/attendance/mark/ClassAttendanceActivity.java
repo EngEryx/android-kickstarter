@@ -2,21 +2,22 @@ package com.eryxlabs.fiderides.ui.attendance.mark;
 
 import android.app.ProgressDialog;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.Toolbar;
-import android.view.View;
 import android.widget.ArrayAdapter;
-import android.widget.Scroller;
+import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.eryxlabs.fiderides.R;
 import com.eryxlabs.fiderides.models.Shift;
 import com.eryxlabs.fiderides.models.Stream;
+import com.eryxlabs.fiderides.ui.attendance.adapters.StreamStudentsRecyclerViewAdapter;
+import com.eryxlabs.fiderides.ui.attendance.adapters.StreamsRecyclerViewAdapter;
 import com.eryxlabs.fiderides.utils.ApiClient;
+import com.eryxlabs.fiderides.utils.EmptyRecyclerView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,6 +31,9 @@ public class ClassAttendanceActivity extends AppCompatActivity {
     private Stream myStream = null;
     private Spinner mSpinner;
     private ProgressDialog progressDialog;
+    private EmptyRecyclerView recyclerView;
+    private LinearLayout emptyView;
+    private StreamStudentsRecyclerViewAdapter mStreamStudentsRecyclerViewAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,8 +54,17 @@ public class ClassAttendanceActivity extends AppCompatActivity {
 
         if (getIntent() != null){
             myStream = (Stream) getIntent().getSerializableExtra("STREAM");
-            showMessage(myStream.getClassStream());
         }
+
+        mStreamStudentsRecyclerViewAdapter =  new StreamStudentsRecyclerViewAdapter(this);
+
+        recyclerView =  findViewById(R.id.streams_students_recycler_view);
+        emptyView = findViewById(R.id.streams_students_empty_recycler_view);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        recyclerView.setEmptyView(emptyView);
+        recyclerView.setAdapter(mStreamStudentsRecyclerViewAdapter);
+
+//        mSpinner.
     }
 
     private void loadAttendanceShifts() {
