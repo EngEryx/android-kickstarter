@@ -20,6 +20,7 @@ import com.eryxlabs.fiderides.R;
 import com.eryxlabs.fiderides.models.Shift;
 import com.eryxlabs.fiderides.models.Stream;
 import com.eryxlabs.fiderides.models.StudentAttendance;
+import com.eryxlabs.fiderides.models.Success;
 import com.eryxlabs.fiderides.ui.attendance.adapters.StreamStudentsRecyclerViewAdapter;
 import com.eryxlabs.fiderides.ui.attendance.adapters.StreamsRecyclerViewAdapter;
 import com.eryxlabs.fiderides.utils.ApiClient;
@@ -129,10 +130,10 @@ public class ClassAttendanceActivity extends AppCompatActivity {
         ApiClient.with(this)
                 .getApiService()
                 .saveAttendance(studentAttendanceList)
-                .enqueue(new Callback<Object>() {
+                .enqueue(new Callback<Success>() {
 
                     @Override
-                    public void onResponse(Call<Object> call, Response<Object> response) {
+                    public void onResponse(Call<Success> call, Response<Success> response) {
                         if (response.isSuccessful()){
                             progressDialog.dismiss();
                             showMessage("Attendance Saved");
@@ -140,7 +141,7 @@ public class ClassAttendanceActivity extends AppCompatActivity {
                     }
 
                     @Override
-                    public void onFailure(Call<Object> call, Throwable t) {
+                    public void onFailure(Call<Success> call, Throwable t) {
                         showMessage(t.getMessage());
                         progressDialog.dismiss();
                     }
