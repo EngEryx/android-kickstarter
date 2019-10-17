@@ -36,11 +36,11 @@
     <include layout="@layout/content_class_attendance" />
 
     <android.support.design.widget.FloatingActionButton
-        android:id="@+id/fab"
+        android:id="@+id/btn_mark_attendance"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/fab_margin"
-        android:icon="@drawable/ic_check_white_36dp"
+        app:srcCompat="@android:drawable/ic_input_add"
         app:backgroundTint="@color/colorPrimary"
         app:layout_anchor="@id/trial"
         app:layout_anchorGravity="bottom|end" />

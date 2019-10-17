@@ -39,6 +39,7 @@ public interface ApiService {
             "Accept:application/json",
             "AUTH:API"
     })
+
     @GET("teacher/attendance/shifts")
     Call<List<Shift>>getShifts();
 
@@ -47,6 +48,6 @@ public interface ApiService {
             "AUTH:API"
     })
     @FormUrlEncoded
-    @POST("teacher/attendance/students/")
+    @POST("teacher/attendance/students")
     Call<List<StudentAttendance>>getStudentsAttendance(@Field("stream_id") int stream_id, @Field("attendance_shift_id") int attendance_shift_id);
 }

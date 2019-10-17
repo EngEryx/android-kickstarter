@@ -1,11 +1,16 @@
 package com.eryxlabs.fiderides.ui.attendance.mark;
 
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.Toolbar;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
@@ -14,6 +19,7 @@ import android.widget.Toast;
 import com.eryxlabs.fiderides.R;
 import com.eryxlabs.fiderides.models.Shift;
 import com.eryxlabs.fiderides.models.Stream;
+import com.eryxlabs.fiderides.models.StudentAttendance;
 import com.eryxlabs.fiderides.ui.attendance.adapters.StreamStudentsRecyclerViewAdapter;
 import com.eryxlabs.fiderides.ui.attendance.adapters.StreamsRecyclerViewAdapter;
 import com.eryxlabs.fiderides.utils.ApiClient;
@@ -29,6 +35,8 @@ import retrofit2.Response;
 public class ClassAttendanceActivity extends AppCompatActivity {
 
     private Stream myStream = null;
+    private List<Shift> mShifts = null;
+    private static List<StudentAttendance> studentAttendanceList =  new ArrayList<>();
     private Spinner mSpinner;
     private ProgressDialog progressDialog;
     private EmptyRecyclerView recyclerView;
@@ -64,7 +72,60 @@ public class ClassAttendanceActivity extends AppCompatActivity {
         recyclerView.setEmptyView(emptyView);
         recyclerView.setAdapter(mStreamStudentsRecyclerViewAdapter);
 
-//        mSpinner.
+        mSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                if(position != 0){
+                    Shift option = mShifts.get(position-1);
+                    loadStudentAttendance(option.getId(), myStream.getId());
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+                showMessage("Select an option");
+            }
+        });
+
+        FloatingActionButton fab = findViewById(R.id.btn_mark_attendance);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Snackbar.make(view, "Posted Attendance data", Snackbar.LENGTH_LONG)
+                        .setAction("Action", null).show();
+            }
+        });
+    }
+
+    private void loadStudentAttendance(int attendance_shift_id, int stream_id) {
+        progressDialog.setMessage("Getting students ...");
+        progressDialog.show();
+        ApiClient.with(this)
+                .getApiService()
+                .getStudentsAttendance(stream_id, attendance_shift_id)
+                .enqueue(new Callback<List<StudentAttendance>>() {
+                    @Override
+                    public void onResponse(Call<List<StudentAttendance>> call, Response<List<StudentAttendance>> response) {
+                        progressDialog.dismiss();
+                        if(response.isSuccessful()){
+                            showStudentAttendance(response.body());
+                        }else{
+                            //todo show refresh
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<List<StudentAttendance>> call, Throwable t) {
+                        showMessage(t.getMessage());
+                        progressDialog.dismiss();
+                    }
+                });
+    }
+
+    private void showStudentAttendance(List<StudentAttendance> studentAttendances) {
+        studentAttendanceList.clear();
+        studentAttendanceList.addAll(studentAttendances);
+        mStreamStudentsRecyclerViewAdapter.setData(studentAttendances);
     }
 
     private void loadAttendanceShifts() {
@@ -93,9 +154,10 @@ public class ClassAttendanceActivity extends AppCompatActivity {
     }
 
     private void populateShifts(List<Shift> shifts) {
+        mShifts = shifts;
         List<String> options = new ArrayList<>();
         options.add(" --  Select Attendance Shift --");
-        for(Shift shift : shifts)
+        for(Shift shift : mShifts)
             options.add(shift.getDescription());
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(
                 this,

@@ -9,14 +9,26 @@ public class StudentAttendance implements Serializable {
     public int id;
 
     @Column("status")
-    public int status;
+    private int status;
 
     @Column("attendance_shift_id")
-    public int attendance_shift_id;
+    private int attendance_shift_id;
 
     @Column("stream_id")
-    public int stream_id;
+    private int stream_id;
 
     @Column("Student")
-    public Student student;
+    private Student student;
+
+    public Student getStudent() {
+        return student;
+    }
+
+    public int getStatus() {
+        return status;
+    }
+
+    public void setStatus(int status) {
+        this.status = status;
+    }
 }

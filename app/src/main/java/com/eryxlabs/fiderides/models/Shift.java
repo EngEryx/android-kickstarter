@@ -8,12 +8,16 @@ import nl.qbusict.cupboard.annotation.Column;
 
 public class Shift implements Serializable {
     @Column("id")
-    public int id;
+    private int id;
 
     @Column("description")
     public String description;
 
     public String getDescription() {
         return description;
+    }
+
+    public int getId() {
+        return id;
     }
 }
