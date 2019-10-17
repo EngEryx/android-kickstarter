@@ -91,4 +91,8 @@ public class StreamStudentsRecyclerViewAdapter extends RecyclerView.Adapter<Stre
         studentsList.addAll(studentAttendances);
         notifyDataSetChanged();
     }
+
+    public List<StudentAttendance> getStudentsList() {
+        return studentsList;
+    }
 }

@@ -15,11 +15,12 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
+import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.eryxlabs.fiderides.models.User;
-import com.eryxlabs.fiderides.ui.LoginActivity;
+import com.eryxlabs.fiderides.ui.login.LoginActivity;
 import com.eryxlabs.fiderides.utils.ApiClient;
 import com.eryxlabs.fiderides.utils.Cache;
 
@@ -30,8 +31,8 @@ import retrofit2.Response;
 public class MainActivity extends AppCompatActivity {
 
     private AppBarConfiguration mAppBarConfiguration;
-    private TextView mUserName;
-    private TextView mUserEmail;
+      private TextView mUserName;
+       private TextView mUserEmail;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,9 +46,7 @@ public class MainActivity extends AppCompatActivity {
             return;
         }
 
-//        mUserName = findViewById(R.id.navigation_user_name);
-//        mUserEmail = findViewById(R.id.navigation_user_email);
-//        initUser();
+
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
@@ -61,6 +60,13 @@ public class MainActivity extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
+
+
+        View headerView=navigationView.getHeaderView(0);
+          mUserName=(TextView) headerView.findViewById(R.id.navigation_user_name);
+        mUserEmail=(TextView)headerView.findViewById(R.id.navigation_user_email);
+        initUser();
+
     }
 
     @Override

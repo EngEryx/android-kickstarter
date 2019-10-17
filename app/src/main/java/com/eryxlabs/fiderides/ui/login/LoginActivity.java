@@ -1,7 +1,10 @@
-package com.eryxlabs.fiderides.ui;
+package com.eryxlabs.fiderides.ui.login;
 
 import android.app.ProgressDialog;
+import android.arch.lifecycle.Observer;
+import android.arch.lifecycle.ViewModelProviders;
 import android.content.Intent;
+import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -28,11 +31,14 @@ public class LoginActivity extends AppCompatActivity {
     private ProgressDialog progressDialog;
     private TextView tvMessage;
 
+    LoginViewModel loginViewModel;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+
+        loginViewModel= ViewModelProviders.of(this).get(LoginViewModel.class);
         progressDialog = new ProgressDialog(this);
         progressDialog.setCancelable(false);
 
@@ -40,6 +46,28 @@ public class LoginActivity extends AppCompatActivity {
         editPassword = findViewById(R.id.editPassword);
         btnLogin = findViewById(R.id.btnLogin);
         tvMessage = findViewById(R.id.tvMessage);
+
+        loginViewModel.accessTokenLogin.observe(this, new Observer<String>() {
+            @Override
+            public void onChanged(@Nullable String s) {
+                if (s!=null){
+
+
+                    Cache.setAuthToken(LoginActivity.this, s);
+                    if(Cache.hasAuthToken(LoginActivity.this)){
+                        Cache.setAuthToken(LoginActivity.this,s);
+                        Intent i = new Intent(LoginActivity.this, MainActivity.class);
+                        i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP|
+                                Intent.FLAG_ACTIVITY_CLEAR_TASK |
+                                Intent.FLAG_ACTIVITY_NEW_TASK);
+                        startActivity(i);
+                    }else{
+                        showMessage("Login failed");
+                    }
+
+                }
+            }
+        });
 
         btnLogin.setOnClickListener(v -> attemptLogin());
 
@@ -55,27 +83,11 @@ public class LoginActivity extends AppCompatActivity {
         tvMessage.setVisibility(View.GONE);
         progressDialog.setMessage("Authenticating user ...");
         progressDialog.show();
-        ApiClient.with(this)
-                .getApiService()
-                .getLoginToken(email,pass, 1)
-                .enqueue(new Callback<UserToken>() {
-                    @Override
-                    public void onResponse(Call<UserToken> call, Response<UserToken> response) {
-                        progressDialog.dismiss();
-                        if(response.isSuccessful()){
-                            showToken(response.body());
-                        }else{
-                            tvMessage.setText("Sorry, invalid passenger username or password.");
-                            tvMessage.setVisibility(View.VISIBLE);
-                        }
-                    }
 
-                    @Override
-                    public void onFailure(Call<UserToken> call, Throwable t) {
-                        showMessage(t.getMessage());
-                        progressDialog.dismiss();
-                    }
-                });
+
+        loginViewModel.attemptLogin(email,pass,1);
+
+
     }
 
 
