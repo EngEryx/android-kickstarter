@@ -24,7 +24,9 @@ public class Stream implements Serializable {
     @Expose
     private Object deletedAt;
 
-    private Teacher teacher;
+    @SerializedName("user")
+    @Expose
+    private User user;
 
     public int getId() {
         return id;
@@ -64,5 +66,14 @@ public class Stream implements Serializable {
 
     public void setDeletedAt(Object deletedAt) {
         this.deletedAt = deletedAt;
+    }
+
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 }
