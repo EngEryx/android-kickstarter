@@ -18,7 +18,6 @@
                 android:text="Student name"
                 android:textStyle="bold"
                 android:padding="5dp"
-                android:padding="@dimen/five"
                 android:id="@+id/student_name"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
