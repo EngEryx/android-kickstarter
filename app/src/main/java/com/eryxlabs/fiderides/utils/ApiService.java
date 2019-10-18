@@ -58,7 +58,6 @@ public interface ApiService {
             "Accept:application/json",
             "AUTH:API"
     })
-    @FormUrlEncoded
     @POST("teacher/attendance/save")
-    Call<Success> saveAttendance(@Field("attendances") List<StudentAttendance> studentAttendanceList);
+    Call<Success> saveAttendance(@Body List<StudentAttendance> studentAttendanceList);
 }

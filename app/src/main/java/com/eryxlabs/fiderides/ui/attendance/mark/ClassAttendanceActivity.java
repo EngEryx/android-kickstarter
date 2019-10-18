@@ -50,9 +50,8 @@ public class ClassAttendanceActivity extends AppCompatActivity {
         setContentView(R.layout.activity_class_attendance);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        ActionBar actionBar = this.getSupportActionBar();
-        if (actionBar != null) {
-            actionBar.setDisplayHomeAsUpEnabled(true);
+        if(getSupportActionBar()!=null){
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         }
 
         progressDialog =  new ProgressDialog(this);
@@ -89,13 +88,10 @@ public class ClassAttendanceActivity extends AppCompatActivity {
         });
 
         FloatingActionButton fab = findViewById(R.id.btn_mark_attendance);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                studentAttendanceList.clear();
-                studentAttendanceList.addAll(mStreamStudentsRecyclerViewAdapter.getStudentsList());
-                sendAttendance();
-            }
+        fab.setOnClickListener(view -> {
+            studentAttendanceList.clear();
+            studentAttendanceList.addAll(mStreamStudentsRecyclerViewAdapter.getStudentsList());
+            sendAttendance();
         });
     }
 
@@ -125,7 +121,7 @@ public class ClassAttendanceActivity extends AppCompatActivity {
     }
 
     private void sendAttendance(){
-        progressDialog.setMessage("Getting students ...");
+        progressDialog.setMessage("Saving attendance ...");
         progressDialog.show();
         ApiClient.with(this)
                 .getApiService()

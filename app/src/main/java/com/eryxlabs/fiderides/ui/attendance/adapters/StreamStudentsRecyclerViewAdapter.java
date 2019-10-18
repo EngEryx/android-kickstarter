@@ -1,22 +1,20 @@
 package com.eryxlabs.fiderides.ui.attendance.adapters;
 
 import android.content.Context;
-import android.content.Intent;
+import android.os.Handler;
 import android.support.annotation.NonNull;
+import android.support.v7.widget.AppCompatEditText;
 import android.support.v7.widget.RecyclerView;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.RadioGroup;
-import android.widget.Switch;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.eryxlabs.fiderides.R;
-import com.eryxlabs.fiderides.models.Student;
 import com.eryxlabs.fiderides.models.StudentAttendance;
-import com.eryxlabs.fiderides.ui.attendance.mark.ClassAttendanceActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -51,24 +49,48 @@ public class StreamStudentsRecyclerViewAdapter extends RecyclerView.Adapter<Stre
                 viewHolder.mRadioGroup.check(R.id.rb_absent);
                 break;
         }
-        viewHolder.mRadioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+        viewHolder.mRadioGroup.setOnCheckedChangeListener((group, checkedId) -> {
+            int status;
+            switch (checkedId) {
+                case R.id.rb_present:
+                    status = 1;
+                    break;
+                case R.id.rb_half_present:
+                    status = 2;
+                    break;
+                default:
+                    status = 3;
+                    break;
+            }
+            studentsList.get(i).setStatus(status);
+            notifyAsync(i);
+        });
+        if (studentsList.get(i).getStatus() == 2){
+            viewHolder.mReason.setVisibility(View.VISIBLE);
+        } else {
+            viewHolder.mReason.setVisibility(View.INVISIBLE);
+        }
+        viewHolder.mReason.setText(studentsList.get(i).getReason());
+        viewHolder.mReason.addTextChangedListener(new TextWatcher() {
             @Override
-            public void onCheckedChanged(RadioGroup group, int checkedId) {
-                int status;
-                switch (checkedId) {
-                    case R.id.rb_present:
-                        status = 1;
-                        break;
-                    case R.id.rb_half_present:
-                        status = 2;
-                        break;
-                    default:
-                        status = 3;
-                        break;
-                }
-                studentsList.get(i).setStatus(status);
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                studentsList.get(i).setReason(s.toString());
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
             }
         });
+    }
+
+    public void notifyAsync(int p){
+        new Handler().post(() -> notifyItemChanged(p));
     }
 
     @Override
@@ -79,10 +101,12 @@ public class StreamStudentsRecyclerViewAdapter extends RecyclerView.Adapter<Stre
     class ViewHolder extends RecyclerView.ViewHolder {
         public TextView tvDetails;
         public RadioGroup mRadioGroup;
+        public AppCompatEditText mReason;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             tvDetails = itemView.findViewById(R.id.tv_student_details);
             mRadioGroup = itemView.findViewById(R.id.rg_attendance);
+            mReason = itemView.findViewById(R.id.et_reason);
         }
     }
 
