@@ -1,10 +1,12 @@
 package com.eryxlabs.fiderides.ui.assessment.dialogs;
 
 import android.app.Dialog;
+import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.DialogFragment;
 import android.support.v7.widget.AppCompatButton;
 import android.support.v7.widget.AppCompatEditText;
@@ -21,6 +23,7 @@ import android.widget.Toast;
 import com.eryxlabs.fiderides.R;
 import com.eryxlabs.fiderides.models.Result;
 import com.eryxlabs.fiderides.ui.assessment.AssessmentViewModel;
+import com.eryxlabs.fiderides.utils.NetworkResponse;
 
 public class MarkAssessment extends DialogFragment {
 
@@ -182,6 +185,32 @@ public class MarkAssessment extends DialogFragment {
             assessmentViewModel.updateGradesOnline(result);
 
 
+        });
+
+
+
+        assessmentViewModel.monitor.observe(this, new Observer<NetworkResponse>() {
+            @Override
+            public void onChanged(@Nullable NetworkResponse networkResponse) {
+                if (networkResponse!=null){
+
+
+                    if (networkResponse.message!=null){
+
+                        Snackbar.make(closeBtn,networkResponse.message,Snackbar.LENGTH_SHORT).show();
+
+                    }else{
+
+
+                        if (!networkResponse.is_loading){
+
+                            getDialog().dismiss();
+                        }
+                    }
+
+
+                }
+            }
         });
 
     }

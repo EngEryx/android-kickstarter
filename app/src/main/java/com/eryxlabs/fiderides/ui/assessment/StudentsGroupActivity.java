@@ -61,11 +61,12 @@ public class StudentsGroupActivity extends AppCompatActivity implements GroupsAd
         });
         if (assessment!=null){
 
-            subject.setText(assessment.getSubjectId()+"");
             date.setText(CoreUtils.dateTimeFormatter(assessment.getDate()));
             description.setText(assessment.getDescription());
 
-
+            if (assessment.getSubject()!=null){
+                subject.setText(assessment.getSubject().getName());
+            }
             //get the student names/records
             assessmentViewModel.getStudentRecordsOnline(assessment.getId());
 

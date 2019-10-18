@@ -53,11 +53,16 @@ public class StudentsIndividualActivity extends AppCompatActivity implements Stu
 
         if (assessment!=null){
 
-                subject.setText(assessment.getSubjectId()+"");
                 date.setText(CoreUtils.dateTimeFormatter(assessment.getDate()));
                 description.setText(assessment.getDescription());
 
 
+                if (assessment.getSubject()!=null){
+                    subject.setText(assessment.getSubject().getName());
+
+
+
+                }
                 //get the student names/records
             getStudentRecordsOnline(assessment.getId());
         }else{

@@ -59,7 +59,18 @@ public class Assessment implements Serializable {
     @Expose
     private String describe_type;
 
+  @SerializedName("subject")
+    @Expose
+    private Subject subject;
 
+
+    public Subject getSubject() {
+        return subject;
+    }
+
+    public void setSubject(Subject subject) {
+        this.subject = subject;
+    }
 
     public int getId() {
         return id;
