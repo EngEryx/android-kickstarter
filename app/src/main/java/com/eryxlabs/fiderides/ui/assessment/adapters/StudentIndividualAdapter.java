@@ -21,7 +21,7 @@ public class StudentIndividualAdapter extends RecyclerView.Adapter<StudentIndivi
     private StudentIndividualAdapterInterface interface_s;
 
     private List<Result> resultList=new ArrayList<>();
-    public StudentIndividualAdapter(Context context){
+    public StudentIndividualAdapter(Context context,StudentIndividualAdapterInterface interface_s){
 
         this.context = context;
         this.interface_s = interface_s;
@@ -44,7 +44,7 @@ public class StudentIndividualAdapter extends RecyclerView.Adapter<StudentIndivi
 
             }
 
-        individuaStudentHolder.itemView.setOnClickListener(new View.OnClickListener() {
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 interface_s.mark();
