@@ -5,6 +5,7 @@ import com.eryxlabs.fiderides.models.Shift;
 import com.eryxlabs.fiderides.models.Stream;
 import com.eryxlabs.fiderides.models.StudentAttendance;
 import com.eryxlabs.fiderides.models.Success;
+import com.eryxlabs.fiderides.models.TravelRecord;
 import com.eryxlabs.fiderides.models.User;
 import com.eryxlabs.fiderides.models.UserToken;
 
@@ -68,4 +69,16 @@ public interface ApiService {
     })
     @GET("travel/routes")
     Call<List<Route>>getRoutes();
+
+    @Headers({
+            "Accept:application/json",
+            "AUTH:API"
+    })
+    @FormUrlEncoded
+    @POST("travel/students")
+    Call<List<TravelRecord>>getTravelRecords(@Field("road_id") int road,@Field("kind") String kind);
+
+
+    @POST("travel/save")
+    Call<Success> updateTravelRecords(@Body List<TravelRecord> records);
 }

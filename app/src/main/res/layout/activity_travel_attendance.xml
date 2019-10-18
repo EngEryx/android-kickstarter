@@ -35,6 +35,15 @@
 
     <include layout="@layout/content_travel_attendance" />
 
+    <ProgressBar
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/pr"
+        android:visibility="gone"
+        >
+
+    </ProgressBar>
+
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/fab"
         android:layout_width="wrap_content"
