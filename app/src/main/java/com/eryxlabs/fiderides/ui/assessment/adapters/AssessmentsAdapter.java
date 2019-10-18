@@ -16,6 +16,7 @@ import android.widget.ImageView;
 
 import com.eryxlabs.fiderides.R;
 import com.eryxlabs.fiderides.models.Assessment;
+import com.eryxlabs.fiderides.utils.CoreUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -80,7 +81,7 @@ public class AssessmentsAdapter extends RecyclerView.Adapter<AssessmentsAdapter.
 
 
         assessmentHolder.subject.setText(assessment.getDescription());
-        assessmentHolder.dueDate.setText(assessment.getDate());
+        assessmentHolder.dueDate.setText(CoreUtils.dateTimeFormatter(assessment.getDate()));
 
     }
 

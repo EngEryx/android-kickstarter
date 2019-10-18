@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 
 import com.eryxlabs.fiderides.R;
 import com.eryxlabs.fiderides.models.Assignment;
+import com.eryxlabs.fiderides.utils.CoreUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -43,7 +44,7 @@ public class AssignmentAdapter extends RecyclerView.Adapter<AssignmentAdapter.As
     public void onBindViewHolder(@NonNull AssignmentViewHolder holder, int i) {
 
         Assignment assignment=assignments.get(i);
-        holder.dueDate.setText(assignment.getDueDate());
+        holder.dueDate.setText(CoreUtils.dateTimeFormatter(assignment.getDueDate()));
         holder.description.setText(assignment.getDescription());
 
     }

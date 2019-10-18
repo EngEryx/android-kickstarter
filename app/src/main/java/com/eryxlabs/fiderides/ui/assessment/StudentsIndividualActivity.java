@@ -16,6 +16,7 @@ import com.eryxlabs.fiderides.R;
 import com.eryxlabs.fiderides.models.Assessment;
 import com.eryxlabs.fiderides.models.Result;
 import com.eryxlabs.fiderides.ui.assessment.adapters.StudentIndividualAdapter;
+import com.eryxlabs.fiderides.utils.CoreUtils;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -52,7 +53,7 @@ public class StudentsIndividualActivity extends AppCompatActivity {
         if (assessment!=null){
 
                 subject.setText(assessment.getSubjectId()+"");
-                date.setText(assessment.getDate());
+                date.setText(CoreUtils.dateTimeFormatter(assessment.getDate()));
                 description.setText(assessment.getDescription());
 
 
