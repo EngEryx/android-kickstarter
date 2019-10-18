@@ -60,7 +60,7 @@ public class AssessmentsAdapter extends RecyclerView.Adapter<AssessmentsAdapter.
                             case R.id.ic_action_results:
                                 return true;
                             case R.id.ic_action_students:
-                                assesmentAdapterInterface.openStudents();
+                                assesmentAdapterInterface.openStudents(assessment);
                                 return true;
                             case R.id.ic_action_edit:
                                 return true;
@@ -103,7 +103,7 @@ public class AssessmentsAdapter extends RecyclerView.Adapter<AssessmentsAdapter.
 
 
     public interface AssesmentAdapterInterface{
-        void openStudents();
+        void openStudents(Assessment assessment);
     }
 
     public void updateData(List<Assessment> updatedList){

@@ -3,9 +3,8 @@ package com.eryxlabs.fiderides.models;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-import java.io.Serializable;
+public class Result {
 
-public class Assessment implements Serializable {
 
     @SerializedName("id")
     @Expose
@@ -15,29 +14,27 @@ public class Assessment implements Serializable {
     @Expose
     private int schoolId;
 
-    @SerializedName("subject_id")
+    @SerializedName("assessment_id")
     @Expose
-    private int subjectId;
+    private int assessment_id;
 
-    @SerializedName("school_session_id")
+    @SerializedName("student_id")
     @Expose
-    private int schoolSessionId;
+    private int student_id;
 
-    @SerializedName("stream_id")
-    @Expose
-    private int streamId;
 
     @SerializedName("description")
     @Expose
     private String description;
 
-    @SerializedName("type")
-    @Expose
-    private int type;
 
-    @SerializedName("date")
+    @SerializedName("grade")
     @Expose
-    private String date;
+    private String grade;
+
+    @SerializedName("assessment_group_id")
+    @Expose
+    private String assessment_group_id;
 
     @SerializedName("created_at")
     @Expose
@@ -51,14 +48,13 @@ public class Assessment implements Serializable {
     @Expose
     private String deleted_at;
 
-    @SerializedName("date_formatted")
+    @SerializedName("grade_formatted")
     @Expose
-    private String date_formatted;
+    private String grade_formatted;
 
-    @SerializedName("describe_type")
+    @SerializedName("student")
     @Expose
-    private String describe_type;
-
+    private Student student;
 
 
     public int getId() {
@@ -77,28 +73,20 @@ public class Assessment implements Serializable {
         this.schoolId = schoolId;
     }
 
-    public int getSubjectId() {
-        return subjectId;
+    public int getAssessment_id() {
+        return assessment_id;
     }
 
-    public void setSubjectId(int subjectId) {
-        this.subjectId = subjectId;
+    public void setAssessment_id(int assessment_id) {
+        this.assessment_id = assessment_id;
     }
 
-    public int getSchoolSessionId() {
-        return schoolSessionId;
+    public int getStudent_id() {
+        return student_id;
     }
 
-    public void setSchoolSessionId(int schoolSessionId) {
-        this.schoolSessionId = schoolSessionId;
-    }
-
-    public int getStreamId() {
-        return streamId;
-    }
-
-    public void setStreamId(int streamId) {
-        this.streamId = streamId;
+    public void setStudent_id(int student_id) {
+        this.student_id = student_id;
     }
 
     public String getDescription() {
@@ -109,20 +97,20 @@ public class Assessment implements Serializable {
         this.description = description;
     }
 
-    public int getType() {
-        return type;
+    public String getGrade() {
+        return grade;
     }
 
-    public void setType(int type) {
-        this.type = type;
+    public void setGrade(String grade) {
+        this.grade = grade;
     }
 
-    public String getDate() {
-        return date;
+    public String getAssessment_group_id() {
+        return assessment_group_id;
     }
 
-    public void setDate(String date) {
-        this.date = date;
+    public void setAssessment_group_id(String assessment_group_id) {
+        this.assessment_group_id = assessment_group_id;
     }
 
     public String getCreated_at() {
@@ -149,21 +137,19 @@ public class Assessment implements Serializable {
         this.deleted_at = deleted_at;
     }
 
-    public String getDate_formatted() {
-        return date_formatted;
+    public String getGrade_formatted() {
+        return grade_formatted;
     }
 
-    public void setDate_formatted(String date_formatted) {
-        this.date_formatted = date_formatted;
+    public void setGrade_formatted(String grade_formatted) {
+        this.grade_formatted = grade_formatted;
     }
 
-    public String getDescribe_type() {
-        return describe_type;
+    public Student getStudent() {
+        return student;
     }
 
-    public void setDescribe_type(String describe_type) {
-        this.describe_type = describe_type;
+    public void setStudent(Student student) {
+        this.student = student;
     }
-
-
 }
