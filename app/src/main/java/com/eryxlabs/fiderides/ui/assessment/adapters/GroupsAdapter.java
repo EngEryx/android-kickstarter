@@ -8,11 +8,15 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.eryxlabs.fiderides.R;
+import com.eryxlabs.fiderides.models.Result;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class GroupsAdapter extends RecyclerView.Adapter<GroupsAdapter.GroupHolder> {
     private Context context;
     private GroupsAdapterInterface groupsAdapterInterface;
-
+    List<Result> resultList=new ArrayList<>();
     public GroupsAdapter(Context context,GroupsAdapterInterface groupsAdapterInterface){
 
         this.context = context;
@@ -28,18 +32,27 @@ public class GroupsAdapter extends RecyclerView.Adapter<GroupsAdapter.GroupHolde
 
     @Override
     public void onBindViewHolder(@NonNull GroupHolder groupHolder, int i) {
-
+            Result result=resultList.get(i);
         groupHolder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                groupsAdapterInterface.mark();
+
+
+                groupsAdapterInterface.mark(result);
             }
         });
     }
 
     @Override
     public int getItemCount() {
-        return 5;
+        return resultList.size();
+    }
+
+    public void updateData(List<Result> results) {
+
+        this.resultList=results;
+        this.notifyDataSetChanged();
+
     }
 
     public class GroupHolder extends RecyclerView.ViewHolder{
@@ -50,6 +63,6 @@ public class GroupsAdapter extends RecyclerView.Adapter<GroupsAdapter.GroupHolde
     }
 
     public interface GroupsAdapterInterface{
-        void mark();
+        void mark(Result result);
     }
 }

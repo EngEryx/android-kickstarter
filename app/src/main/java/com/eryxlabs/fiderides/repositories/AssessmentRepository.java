@@ -2,6 +2,7 @@ package com.eryxlabs.fiderides.repositories;
 
 import android.app.Application;
 import android.arch.lifecycle.MutableLiveData;
+import android.util.Log;
 
 import com.eryxlabs.fiderides.models.Assessment;
 import com.eryxlabs.fiderides.models.Assignment;
@@ -84,6 +85,30 @@ public class AssessmentRepository extends BaseRepository{
             }
         });
 
+
+    }
+
+    public void updateGradesOnline(Result result) {
+
+        Log.e("results_results",result.getDescription() + result.getGrade());
+        Call<Void> call=CoreUtils.getAuthRetrofitClient(getToken()).create(AssessmentService.class).updateResults(result.getId(),result.getDescription(),Integer.valueOf(result.getGrade()));
+        call.enqueue(new Callback<Void>() {
+            @Override
+            public void onResponse(Call<Void> call, Response<Void> response) {
+
+            monitor.postValue(new NetworkResponse(false));
+
+            }
+
+            @Override
+            public void onFailure(Call<Void> call, Throwable t) {
+                try{
+                    monitor.postValue(new NetworkResponse(false,"Check your internet connection then try again",((HttpException) t).code()));
+                }catch (Exception e){
+                    monitor.postValue(new NetworkResponse(false,"Check your internet connection then try again",0));
+                }
+            }
+        });
 
     }
 }

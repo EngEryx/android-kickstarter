@@ -20,16 +20,16 @@
 
         <activity android:name=".ui.assessment.StudentsGroupActivity"
             android:label="Mark"
-            android:theme="@style/AppTheme"></activity>
+            android:theme="@style/AppTheme2"></activity>
         <activity
             android:name=".ui.assessment.StudentsIndividualActivity"
             android:label="Mark"
-            android:theme="@style/AppTheme">
+            android:theme="@style/AppTheme2">
         </activity>
         <activity
             android:name=".ui.attendance.mark.ClassAttendanceActivity"
             android:label="@string/mark_attendance"
-            android:theme="@style/AppTheme">
+            android:theme="@style/AppTheme2">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivity" />

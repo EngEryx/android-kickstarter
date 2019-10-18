@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.eryxlabs.fiderides.R;
+import com.eryxlabs.fiderides.models.Result;
 
 public class StudentGroupAdapter extends RecyclerView.Adapter<StudentGroupAdapter.GroupStudentHolder> {
 
@@ -32,6 +33,7 @@ public class StudentGroupAdapter extends RecyclerView.Adapter<StudentGroupAdapte
         individuaStudentHolder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
             }
         });
 
@@ -50,6 +52,6 @@ public class StudentGroupAdapter extends RecyclerView.Adapter<StudentGroupAdapte
     }
 
     public interface StudentGroupAdapterInterface{
-        void mark();
+        void mark(Result result);
     }
 }

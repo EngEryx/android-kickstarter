@@ -20,4 +20,10 @@ public interface AssessmentService {
     @FormUrlEncoded
     @POST("teacher/assessment/results")
     Call<List<Result>> getAssessmentResults(@Field("assessment_id") int assessmentId);
+
+
+
+    @FormUrlEncoded
+    @POST("teacher/assessment/result/update")
+    Call<Void> updateResults(@Field("id") int id,@Field("description") String description, @Field("grade") int grade);
 }

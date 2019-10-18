@@ -47,7 +47,7 @@ public class StudentIndividualAdapter extends RecyclerView.Adapter<StudentIndivi
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                interface_s.mark();
+                interface_s.mark(result);
             }
         });
 
@@ -55,6 +55,7 @@ public class StudentIndividualAdapter extends RecyclerView.Adapter<StudentIndivi
 
     @Override
     public int getItemCount() {
+
         return resultList.size();
     }
 
@@ -74,7 +75,7 @@ public class StudentIndividualAdapter extends RecyclerView.Adapter<StudentIndivi
     }
 
     public interface StudentIndividualAdapterInterface{
-        void mark();
+        void mark(Result result);
     }
 
 

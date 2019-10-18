@@ -53,11 +53,16 @@ public class StudentsIndividualActivity extends AppCompatActivity implements Stu
 
         if (assessment!=null){
 
-                subject.setText(assessment.getSubjectId()+"");
                 date.setText(CoreUtils.dateTimeFormatter(assessment.getDate()));
                 description.setText(assessment.getDescription());
 
 
+                if (assessment.getSubject()!=null){
+                    subject.setText(assessment.getSubject().getName());
+
+
+
+                }
                 //get the student names/records
             getStudentRecordsOnline(assessment.getId());
         }else{
@@ -98,7 +103,11 @@ public class StudentsIndividualActivity extends AppCompatActivity implements Stu
     }
 
     @Override
-    public void mark() {
-        new MarkAssessment().show(getSupportFragmentManager(),"Mark modal");
+    public void mark(Result result) {
+        MarkAssessment markAssessment=new MarkAssessment();
+        Bundle bundle=new Bundle();
+        bundle.putSerializable("result",result);
+        markAssessment.setArguments(bundle);
+        markAssessment.show(getSupportFragmentManager(),"Mark modal");
     }
 }

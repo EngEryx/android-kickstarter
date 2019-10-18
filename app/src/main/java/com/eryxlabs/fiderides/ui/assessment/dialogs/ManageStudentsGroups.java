@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 import android.view.Window;
 
 import com.eryxlabs.fiderides.R;
+import com.eryxlabs.fiderides.models.Result;
 import com.eryxlabs.fiderides.ui.assessment.adapters.StudentGroupAdapter;
 
 public class ManageStudentsGroups extends DialogFragment implements StudentGroupAdapter.StudentGroupAdapterInterface {
@@ -58,7 +59,7 @@ public class ManageStudentsGroups extends DialogFragment implements StudentGroup
     }
 
     @Override
-    public void mark() {
+    public void mark(Result result) {
 
     }
 }

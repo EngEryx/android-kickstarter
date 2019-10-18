@@ -27,6 +27,7 @@ public class AssessmentFragment extends Fragment implements AssessmentsAdapter.A
     private RecyclerView recyclerView;
     private AppCompatButton add_button;
 
+
     AssessmentViewModel assessmentViewModel;
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -39,7 +40,6 @@ public class AssessmentFragment extends Fragment implements AssessmentsAdapter.A
         super.onViewCreated(view, savedInstanceState);
         assessmentViewModel= ViewModelProviders.of(this).get(AssessmentViewModel.class);
 
-
         assessmentViewModel.getAllAssessmentsOnline();
         recyclerView = view.findViewById(R.id.list);
         add_button = view.findViewById(R.id.add_button);
@@ -49,9 +49,7 @@ public class AssessmentFragment extends Fragment implements AssessmentsAdapter.A
 
 
         add_button.setOnClickListener(v -> {
-
             new AddAssessment().show(getChildFragmentManager(),"Add assessment");
-
         });
 
         assessmentViewModel.assessments.observe(this, new Observer<List<Assessment>>() {
@@ -59,7 +57,6 @@ public class AssessmentFragment extends Fragment implements AssessmentsAdapter.A
             public void onChanged(@Nullable List<Assessment> assessments) {
                 if (assessments!=null){
                     assessmentsAdapter.updateData(assessments);
-
                 }
             }
         });
@@ -68,7 +65,14 @@ public class AssessmentFragment extends Fragment implements AssessmentsAdapter.A
 
     @Override
     public void openStudents(Assessment assessment) {
-        Intent t = new Intent(getActivity(),StudentsIndividualActivity.class);
+        //0-individual 1-group
+
+        Intent t;
+        if (assessment.getType()==0){
+            t = new Intent(getActivity(),StudentsIndividualActivity.class);
+        }else{
+             t = new Intent(getActivity(),StudentsGroupActivity.class);
+        }
         t.putExtra("assessment", assessment);
         getActivity().startActivity(t);
     }
