@@ -1,5 +1,6 @@
 package com.eryxlabs.fiderides.utils;
 
+import com.eryxlabs.fiderides.models.Route;
 import com.eryxlabs.fiderides.models.Shift;
 import com.eryxlabs.fiderides.models.Stream;
 import com.eryxlabs.fiderides.models.StudentAttendance;
@@ -60,4 +61,11 @@ public interface ApiService {
     })
     @POST("teacher/attendance/save")
     Call<Success> saveAttendance(@Body List<StudentAttendance> studentAttendanceList);
+
+    @Headers({
+            "Accept:application/json",
+            "AUTH:API"
+    })
+    @GET("travel/routes")
+    Call<List<Route>>getRoutes();
 }

@@ -4,7 +4,7 @@
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <android.support.v7.widget.CardView
-        android:layout_margin="@dimen/five"
+        android:layout_margin="5dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
@@ -17,6 +17,7 @@
                 android:layout_width="0dp"
                 android:text="Student name"
                 android:textStyle="bold"
+                android:padding="5dp"
                 android:padding="@dimen/five"
                 android:id="@+id/student_name"
                 app:layout_constraintLeft_toLeftOf="parent"

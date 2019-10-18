@@ -10,7 +10,7 @@
         android:layout_width="0dp"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
-        android:layout_margin="@dimen/ten"
+        android:layout_margin="10dp"
         android:id="@+id/top_card"
         app:layout_constraintRight_toRightOf="parent"
         android:layout_height="wrap_content">
@@ -18,7 +18,7 @@
         <android.support.constraint.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="@dimen/ten"
+            android:padding="10dp"
             >
 
             <android.support.v7.widget.AppCompatTextView
@@ -37,7 +37,7 @@
                 app:layout_constraintLeft_toRightOf="@+id/subject_label"
                 android:id="@+id/subject"
                 android:textStyle="bold"
-                android:layout_marginLeft="@dimen/ten"
+                android:layout_marginLeft="10dp"
                 android:layout_height="wrap_content"
                 />
 
@@ -55,7 +55,7 @@
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
                 android:text="23/7/2019"
-                android:layout_marginLeft="@dimen/ten"
+                android:layout_marginLeft="10dp"
                 android:textStyle="bold"
                 android:id="@+id/date"
                 android:layout_height="wrap_content"
@@ -77,7 +77,7 @@
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintLeft_toLeftOf="parent"
                 android:text="The description goes here on and on"
-                android:layout_marginTop="@dimen/ten"
+                android:layout_marginTop="10dp"
                 android:textStyle="bold"
                 android:id="@+id/description"
                 android:layout_height="wrap_content"
@@ -93,9 +93,9 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:id="@+id/list"
-        android:layout_marginLeft="@dimen/ten"
-        android:layout_marginTop="@dimen/ten"
-        android:layout_marginRight="@dimen/ten"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="10dp"
         app:layout_constraintTop_toBottomOf="@id/top_card"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
