@@ -73,7 +73,9 @@ public class AssessmentsAdapter extends RecyclerView.Adapter<AssessmentsAdapter.
 
                     }
                 });
-                @SuppressLint("RestrictedApi") MenuPopupHelper menuHelper = new MenuPopupHelper(context,(MenuBuilder)popup.getMenu(),assessmentHolder.more);
+
+                @SuppressLint("RestrictedApi")
+                MenuPopupHelper menuHelper = new MenuPopupHelper(context,(MenuBuilder)popup.getMenu(),assessmentHolder.more);
                 menuHelper.setForceShowIcon(true);
                 menuHelper.show();
             }

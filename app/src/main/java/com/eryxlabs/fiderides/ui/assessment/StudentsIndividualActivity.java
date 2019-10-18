@@ -98,7 +98,11 @@ public class StudentsIndividualActivity extends AppCompatActivity implements Stu
     }
 
     @Override
-    public void mark() {
-        new MarkAssessment().show(getSupportFragmentManager(),"Mark modal");
+    public void mark(Result result) {
+        MarkAssessment markAssessment=new MarkAssessment();
+        Bundle bundle=new Bundle();
+        bundle.putSerializable("result",result);
+        markAssessment.setArguments(bundle);
+        markAssessment.show(getSupportFragmentManager(),"Mark modal");
     }
 }

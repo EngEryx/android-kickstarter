@@ -37,4 +37,8 @@ public class AssessmentViewModel extends AndroidViewModel {
         assessmentRepository.getStudentRecordsOnline(assessmentId);
     }
 
+    public void updateGradesOnline(Result result){
+
+        assessmentRepository.updateGradesOnline(result);
+    }
 }
