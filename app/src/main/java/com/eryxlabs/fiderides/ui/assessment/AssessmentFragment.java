@@ -49,7 +49,7 @@ public class AssessmentFragment extends Fragment implements AssessmentsAdapter.A
 
     @Override
     public void openStudents() {
-        Intent t = new Intent(getActivity(),StudentsIndividualActivity.class);
+        Intent t = new Intent(getActivity(),StudentsGroupActivity.class);
         getActivity().startActivity(t);
     }
 }

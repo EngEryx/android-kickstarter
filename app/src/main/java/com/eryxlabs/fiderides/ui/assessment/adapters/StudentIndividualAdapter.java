@@ -12,10 +12,12 @@ import com.eryxlabs.fiderides.R;
 public class StudentIndividualAdapter extends RecyclerView.Adapter<StudentIndividualAdapter.IndividuaStudentHolder> {
 
     private Context context;
+    private StudentIndividualAdapterInterface interface_s;
 
-    public StudentIndividualAdapter(Context context){
+    public StudentIndividualAdapter(Context context,StudentIndividualAdapterInterface interface_s){
 
         this.context = context;
+        this.interface_s = interface_s;
     }
     @NonNull
     @Override
@@ -26,6 +28,13 @@ public class StudentIndividualAdapter extends RecyclerView.Adapter<StudentIndivi
 
     @Override
     public void onBindViewHolder(@NonNull IndividuaStudentHolder individuaStudentHolder, int i) {
+
+        individuaStudentHolder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                interface_s.mark();
+            }
+        });
 
     }
 
@@ -39,5 +48,9 @@ public class StudentIndividualAdapter extends RecyclerView.Adapter<StudentIndivi
         public IndividuaStudentHolder(@NonNull View itemView) {
             super(itemView);
         }
+    }
+
+    public interface StudentIndividualAdapterInterface{
+        void mark();
     }
 }
