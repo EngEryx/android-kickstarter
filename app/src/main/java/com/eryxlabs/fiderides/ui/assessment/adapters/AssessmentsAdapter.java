@@ -5,6 +5,7 @@ import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.v7.view.menu.MenuBuilder;
 import android.support.v7.view.menu.MenuPopupHelper;
+import android.support.v7.widget.AppCompatTextView;
 import android.support.v7.widget.PopupMenu;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -14,12 +15,17 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import com.eryxlabs.fiderides.R;
+import com.eryxlabs.fiderides.models.Assessment;
+import com.eryxlabs.fiderides.utils.CoreUtils;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class AssessmentsAdapter extends RecyclerView.Adapter<AssessmentsAdapter.AssessmentHolder> {
 
     private Context context;
     private AssesmentAdapterInterface assesmentAdapterInterface;
-
+    private List<Assessment> assessmentList=new ArrayList<>();
     public AssessmentsAdapter(Context context,AssesmentAdapterInterface assesmentAdapterInterface){
 
         this.context = context;
@@ -36,6 +42,7 @@ public class AssessmentsAdapter extends RecyclerView.Adapter<AssessmentsAdapter.
     @Override
     public void onBindViewHolder(@NonNull AssessmentHolder assessmentHolder, int i) {
 
+        Assessment assessment=assessmentList.get(i);
         assessmentHolder.more.setOnClickListener(new View.OnClickListener() {
             @SuppressLint("RestrictedApi")
             @Override
@@ -54,7 +61,7 @@ public class AssessmentsAdapter extends RecyclerView.Adapter<AssessmentsAdapter.
                             case R.id.ic_action_results:
                                 return true;
                             case R.id.ic_action_students:
-                                assesmentAdapterInterface.openStudents();
+                                assesmentAdapterInterface.openStudents(assessment);
                                 return true;
                             case R.id.ic_action_edit:
                                 return true;
@@ -72,23 +79,37 @@ public class AssessmentsAdapter extends RecyclerView.Adapter<AssessmentsAdapter.
             }
         });
 
+
+        assessmentHolder.subject.setText(assessment.getDescription());
+        assessmentHolder.dueDate.setText(CoreUtils.dateTimeFormatter(assessment.getDate()));
+
     }
 
     @Override
     public int getItemCount() {
-        return 4;
+        return assessmentList.size();
     }
 
     public class AssessmentHolder extends RecyclerView.ViewHolder{
         public ImageView more;
+        public AppCompatTextView dueDate;
+        public AppCompatTextView subject;
         public AssessmentHolder(@NonNull View itemView) {
             super(itemView);
             more = itemView.findViewById(R.id.more_menu);
+            dueDate=itemView.findViewById(R.id.due_date);
+            subject=itemView.findViewById(R.id.subject);
         }
     }
 
 
     public interface AssesmentAdapterInterface{
-        void openStudents();
+        void openStudents(Assessment assessment);
+    }
+
+    public void updateData(List<Assessment> updatedList){
+
+        this.assessmentList=updatedList;
+        this.notifyDataSetChanged();
     }
 }

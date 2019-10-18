@@ -3,12 +3,15 @@ package com.eryxlabs.fiderides.utils;
 import com.eryxlabs.fiderides.models.Shift;
 import com.eryxlabs.fiderides.models.Stream;
 import com.eryxlabs.fiderides.models.StudentAttendance;
+import com.eryxlabs.fiderides.models.Success;
 import com.eryxlabs.fiderides.models.User;
 import com.eryxlabs.fiderides.models.UserToken;
 
 import java.util.List;
 
+import okhttp3.ResponseBody;
 import retrofit2.Call;
+import retrofit2.http.Body;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
@@ -55,7 +58,6 @@ public interface ApiService {
             "Accept:application/json",
             "AUTH:API"
     })
-    @FormUrlEncoded
     @POST("teacher/attendance/save")
-    Call<Object> saveAttendance(List<StudentAttendance> studentAttendanceList);
+    Call<Success> saveAttendance(@Body List<StudentAttendance> studentAttendanceList);
 }

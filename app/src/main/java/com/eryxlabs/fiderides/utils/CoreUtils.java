@@ -18,9 +18,13 @@ import com.google.gson.GsonBuilder;
 
 
 import java.net.URISyntaxException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 import java.util.concurrent.Executors;
 import java.util.regex.Pattern;
 
@@ -87,5 +91,27 @@ public class CoreUtils {
         return auth_retrofit;
     }
 
+
+    public static String dateTimeFormatter(String enteredDateTime){
+        String formattedDate="";
+
+        SimpleDateFormat formatter2=new SimpleDateFormat("yyyy-MM-dd hh:mm", Locale.ENGLISH);
+
+        SimpleDateFormat formatter5=new SimpleDateFormat("E, MMM d yyyy HH:mm a");
+
+        try{
+
+            Date dateTime=formatter2.parse(enteredDateTime);
+
+            formattedDate=formatter5.format(dateTime);
+
+        }catch (ParseException e){
+
+            e.printStackTrace();
+        }
+
+
+        return  formattedDate;
+    }
 
 }

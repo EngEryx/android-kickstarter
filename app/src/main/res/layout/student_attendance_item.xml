@@ -55,5 +55,11 @@
                 android:text="@string/present"
                 android:paddingBottom="4dp" />
         </RadioGroup>
+        <android.support.v7.widget.AppCompatEditText
+            android:id="@+id/et_reason"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/reason"
+            android:visibility="invisible"/>
     </LinearLayout>
 </android.support.v7.widget.CardView>

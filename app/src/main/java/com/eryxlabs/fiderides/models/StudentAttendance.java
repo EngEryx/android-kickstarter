@@ -3,6 +3,7 @@ package com.eryxlabs.fiderides.models;
 import java.io.Serializable;
 
 import nl.qbusict.cupboard.annotation.Column;
+import nl.qbusict.cupboard.annotation.Ignore;
 
 public class StudentAttendance implements Serializable {
     @Column("id")
@@ -17,6 +18,9 @@ public class StudentAttendance implements Serializable {
     @Column("stream_id")
     private int stream_id;
 
+    @Column("reason")
+    private String reason;
+
     @Column("Student")
     private Student student;
 
@@ -30,5 +34,13 @@ public class StudentAttendance implements Serializable {
 
     public void setStatus(int status) {
         this.status = status;
+    }
+
+    public String getReason() {
+        return reason;
+    }
+
+    public void setReason(String reason) {
+        this.reason = reason;
     }
 }

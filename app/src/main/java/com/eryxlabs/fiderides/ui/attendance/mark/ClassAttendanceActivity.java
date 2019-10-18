@@ -20,6 +20,7 @@ import com.eryxlabs.fiderides.R;
 import com.eryxlabs.fiderides.models.Shift;
 import com.eryxlabs.fiderides.models.Stream;
 import com.eryxlabs.fiderides.models.StudentAttendance;
+import com.eryxlabs.fiderides.models.Success;
 import com.eryxlabs.fiderides.ui.attendance.adapters.StreamStudentsRecyclerViewAdapter;
 import com.eryxlabs.fiderides.ui.attendance.adapters.StreamsRecyclerViewAdapter;
 import com.eryxlabs.fiderides.utils.ApiClient;
@@ -49,9 +50,8 @@ public class ClassAttendanceActivity extends AppCompatActivity {
         setContentView(R.layout.activity_class_attendance);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        ActionBar actionBar = this.getSupportActionBar();
-        if (actionBar != null) {
-            actionBar.setDisplayHomeAsUpEnabled(true);
+        if(getSupportActionBar()!=null){
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         }
 
         progressDialog =  new ProgressDialog(this);
@@ -88,13 +88,10 @@ public class ClassAttendanceActivity extends AppCompatActivity {
         });
 
         FloatingActionButton fab = findViewById(R.id.btn_mark_attendance);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                studentAttendanceList.clear();
-                studentAttendanceList.addAll(mStreamStudentsRecyclerViewAdapter.getStudentsList());
-                sendAttendance();
-            }
+        fab.setOnClickListener(view -> {
+            studentAttendanceList.clear();
+            studentAttendanceList.addAll(mStreamStudentsRecyclerViewAdapter.getStudentsList());
+            sendAttendance();
         });
     }
 
@@ -124,14 +121,27 @@ public class ClassAttendanceActivity extends AppCompatActivity {
     }
 
     private void sendAttendance(){
-//        progressDialog.setMessage("Getting students ...");
-//        progressDialog.show();
-//        ApiClient.with(this)
-//                .getApiService()
-//                .saveAttendance(studentAttendanceList)
-//                .enqueue(new Callback<>() {
-//
-//                });
+        progressDialog.setMessage("Saving attendance ...");
+        progressDialog.show();
+        ApiClient.with(this)
+                .getApiService()
+                .saveAttendance(studentAttendanceList)
+                .enqueue(new Callback<Success>() {
+
+                    @Override
+                    public void onResponse(Call<Success> call, Response<Success> response) {
+                        if (response.isSuccessful()){
+                            progressDialog.dismiss();
+                            showMessage("Attendance Saved");
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<Success> call, Throwable t) {
+                        showMessage(t.getMessage());
+                        progressDialog.dismiss();
+                    }
+                });
     }
 
     private void showStudentAttendance(List<StudentAttendance> studentAttendances) {
