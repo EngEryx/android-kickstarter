@@ -140,4 +140,5 @@
     <string name="menu_asessment">Assessment</string>
     <string name="menu_assessments">Assessments</string>
     <string name="reason">Reason</string>
+    <string name="title_activity_travel_attendance">TravelAttendanceActivity</string>
 </resources>

@@ -22,7 +22,6 @@ public class AssessmentViewModel extends AndroidViewModel {
         super(application);
 
         assessmentRepository=new AssessmentRepository(application);
-
         monitor=assessmentRepository.monitor;
         assessments=assessmentRepository.assessments;
         assessmentResults=assessmentRepository.assessmentResults;

@@ -14,8 +14,8 @@
         app:layout_constraintTop_toTopOf="parent"
         android:drawableLeft="@drawable/ic_action_add"
         android:id="@+id/add_button"
-        android:layout_marginRight="@dimen/ten"
-        android:layout_marginTop="@dimen/five"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="5dp"
         app:layout_constraintRight_toRightOf="parent"
         android:layout_height="40dp">
 
