@@ -17,9 +17,7 @@
             android:name=".ui.travel.mark.TravelAttendanceActivity"
             android:label="Travel Attendance"
             android:theme="@style/AppTheme.NoActionBar"></activity>
-        <activity
-            android:name=".ui.assessment.StudentsIndividualActivity"
-            android:usesCleartextTraffic="true"></activity>
+
         <activity android:name=".ui.assessment.StudentsGroupActivity"
             android:label="Mark"
             android:theme="@style/AppTheme"></activity>

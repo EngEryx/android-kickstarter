@@ -60,10 +60,10 @@ public class StudentIndividualAdapter extends RecyclerView.Adapter<StudentIndivi
 
 
     public void updateData(List<Result> updatedData){
-
         this.resultList=updatedData;
         this.notifyDataSetChanged();
     }
+
     public class IndividuaStudentHolder extends RecyclerView.ViewHolder{
         AppCompatTextView studentName;
         public IndividuaStudentHolder(@NonNull View itemView) {
