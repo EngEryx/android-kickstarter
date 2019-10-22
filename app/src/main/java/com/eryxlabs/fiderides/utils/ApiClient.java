@@ -25,7 +25,7 @@ public class ApiClient {
     Retrofit getRetrofitClient(){
 
         return new Retrofit.Builder()
-                .baseUrl("https://shuleyetu.co.ke/api/")
+                .baseUrl("http://10.1.0.228/fiderides/public/api/v1/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .client(getOkHttpClient())
                 .build();

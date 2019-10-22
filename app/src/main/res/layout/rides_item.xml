@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:minHeight="100dp"
+    android:layout_margin="8dp"
+    android:padding="2dp"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:src="@drawable/ride_item_icon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:id="@+id/tvDetails"
+                android:layout_gravity="center_vertical"
+                android:textColor="@color/primary_text"
+                android:textSize="16sp"
+                android:padding="4dp"
+                android:text="Nchiru - Nyeri"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:id="@+id/tvDriver"
+                android:layout_weight="1"
+                android:layout_margin="4dp"
+                android:padding="4dp"
+                android:textColor="@color/primary_text"
+                android:textSize="14sp"
+                android:text="Ride with Stephen Kiarie #:"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:id="@+id/tvDayTime"
+                android:layout_weight="1"
+                android:layout_margin="4dp"
+                android:padding="4dp"
+                android:textColor="@color/primary_text"
+                android:textSize="18sp"
+                android:text="Mar 26, 08:00 - 09:00"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:id="@+id/tvPassengers"
+                android:layout_weight="1"
+                android:layout_margin="4dp"
+                android:text="Passengers: 9"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:id="@+id/tvRemain"
+                android:layout_weight="1"
+                android:layout_margin="4dp"
+                android:text="Remaining: 9"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <Button
+                android:visibility="gone"
+                android:id="@+id/btnParcel"
+                android:textAllCaps="false"
+                android:text="Parcel"
+                android:layout_margin="4dp"
+                android:layout_weight="1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <Button
+                android:id="@+id/btnBook"
+                android:textAllCaps="false"
+                android:text="Book"
+                android:layout_margin="4dp"
+                android:layout_weight="1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+    </LinearLayout>
+</android.support.v7.widget.CardView>
