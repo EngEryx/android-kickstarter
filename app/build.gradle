@@ -16,11 +16,11 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-            buildConfigField('String', 'BASE_URL', '"http://192.168.100.225/sims/two/shuleyetu/public/api/"')
+            buildConfigField('String', 'BASE_URL', '"https://shuleyetu.co.ke/api/"')
 
         }
         debug {
-            buildConfigField('String', 'BASE_URL', '"http://192.168.100.225/sims/two/shuleyetu/public/api/"')
+            buildConfigField('String', 'BASE_URL', '"https://shuleyetu.co.ke/api/"')
         }
     }
 
