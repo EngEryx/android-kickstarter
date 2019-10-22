@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<android.support.v4.widget.NestedScrollView
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    >
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:padding="10dp"
+        android:background="@android:color/white"
+        android:orientation="vertical"
+        android:layout_gravity="center_vertical"
+        android:layout_height="wrap_content">
+
+
+        <android.support.v7.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Class/Stream"
+            android:textStyle="bold"
+            >
+
+        </android.support.v7.widget.AppCompatTextView>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:background="@drawable/input_background"
+            android:layout_height="wrap_content">
+
+            <android.support.v7.widget.AppCompatSpinner
+                android:layout_width="match_parent"
+                android:minHeight="50dp"
+                android:layout_height="wrap_content"
+                >
+            </android.support.v7.widget.AppCompatSpinner>
+        </LinearLayout>
+
+        <android.support.v7.widget.AppCompatEditText
+            android:layout_width="match_parent"
+            android:background="@drawable/input_background"
+            android:layout_height="wrap_content"
+            android:hint="Due date"
+            android:drawableLeft="@drawable/ic_action_calendar"
+            android:paddingLeft="5dp"
+            android:minHeight="50dp"
+            android:layout_marginTop="@dimen/activity_vertical_margin"
+            android:lineHeight="50dp"
+            >
+
+        </android.support.v7.widget.AppCompatEditText>
+
+        <android.support.v7.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Scope"
+            android:layout_marginTop="@dimen/activity_vertical_margin"
+            android:textStyle="bold"
+            >
+
+        </android.support.v7.widget.AppCompatTextView>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:background="@drawable/input_background"
+            android:layout_height="wrap_content">
+
+            <android.support.v7.widget.AppCompatSpinner
+                android:layout_width="match_parent"
+                android:minHeight="50dp"
+                android:layout_height="wrap_content"
+                >
+            </android.support.v7.widget.AppCompatSpinner>
+        </LinearLayout>
+
+
+        <android.support.v7.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Subject"
+            android:layout_marginTop="@dimen/activity_vertical_margin"
+            android:textStyle="bold"
+            >
+
+        </android.support.v7.widget.AppCompatTextView>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:background="@drawable/input_background"
+            android:layout_height="wrap_content">
+
+            <android.support.v7.widget.AppCompatSpinner
+                android:layout_width="match_parent"
+                android:minHeight="50dp"
+                android:layout_height="wrap_content"
+                >
+            </android.support.v7.widget.AppCompatSpinner>
+        </LinearLayout>
+
+        <android.support.v7.widget.AppCompatEditText
+            android:layout_width="match_parent"
+            android:background="@drawable/input_background"
+            android:layout_height="wrap_content"
+            android:hint="Description..."
+            android:gravity="top"
+            android:paddingLeft="5dp"
+            android:minHeight="100dp"
+            android:layout_marginTop="@dimen/activity_vertical_margin"
+            android:lineHeight="50dp"
+            />
+
+
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_marginTop="@dimen/activity_vertical_margin"
+            android:layout_height="wrap_content"
+            >
+            <android.support.v7.widget.AppCompatButton
+                android:layout_width="wrap_content"
+                android:text="Close"
+                android:background="@drawable/custom_button_primary"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_marginBottom="5dp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                style="@style/Widget.AppCompat.Button.Colored"
+                android:layout_height="45dp"/>
+
+            <android.support.v7.widget.AppCompatButton
+                android:layout_width="wrap_content"
+                android:text="Submit"
+                android:layout_marginBottom="5dp"
+                android:background="@drawable/custom_button_accent"
+                android:layout_gravity="right"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                style="@style/Widget.AppCompat.Button.Colored"
+                android:layout_height="45dp">
+
+            </android.support.v7.widget.AppCompatButton>
+        </android.support.constraint.ConstraintLayout>
+
+
+
+
+    </LinearLayout>
+</android.support.v4.widget.NestedScrollView>
