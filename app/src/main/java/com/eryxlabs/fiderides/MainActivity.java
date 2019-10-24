@@ -16,13 +16,18 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.eryxlabs.fiderides.models.User;
 import com.eryxlabs.fiderides.ui.login.LoginActivity;
 import com.eryxlabs.fiderides.utils.ApiClient;
 import com.eryxlabs.fiderides.utils.Cache;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -31,8 +36,10 @@ import retrofit2.Response;
 public class MainActivity extends AppCompatActivity {
 
     private AppBarConfiguration mAppBarConfiguration;
-      private TextView mUserName;
-       private TextView mUserEmail;
+    private TextView mUserName;
+    private TextView mUserEmail;
+    private ImageView mUserImage;
+    private NavigationView navigationView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,7 +56,8 @@ public class MainActivity extends AppCompatActivity {
 
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
-        NavigationView navigationView = findViewById(R.id.nav_view);
+        navigationView = findViewById(R.id.nav_view);
+
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         mAppBarConfiguration = new AppBarConfiguration.Builder(
@@ -65,8 +73,8 @@ public class MainActivity extends AppCompatActivity {
         View headerView = navigationView.getHeaderView(0);
         mUserName = headerView.findViewById(R.id.navigation_user_name);
         mUserEmail = headerView.findViewById(R.id.navigation_user_email);
+        mUserImage = headerView.findViewById(R.id.navigation_user_image);
         initUser();
-
     }
 
     @Override
@@ -125,6 +133,13 @@ public class MainActivity extends AppCompatActivity {
     private void showUser(User user) {
         mUserName.setText(user.getFullName());
         mUserEmail.setText(user.getEmail());
+        Glide.with(getApplicationContext()).load(user.getPicture()).circleCrop().into(mUserImage);
+        int[] arr = {R.id.nav_assessment, R.id.nav_assignments, R.id.nav_attendance};
+        if (!user.getIsDriver()){
+            for (int m : arr) navigationView.getMenu().findItem(m).setVisible(false);
+        } else {
+            navigationView.getMenu().findItem(R.id.nav_travel).setVisible(false);
+        }
     }
 
     private void showMessage(String message) {

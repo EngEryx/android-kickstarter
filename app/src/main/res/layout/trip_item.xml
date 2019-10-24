@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginTop="5dp"
@@ -21,12 +20,12 @@
             <android.support.v7.widget.AppCompatTextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Wangige - Peponi"
+                android:text="One"
                 android:textStyle="bold"
                 android:textColor="@color/primary_text"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintLeft_toLeftOf="parent"
-                android:id="@+id/tv_route"
+                android:id="@+id/tv_trip"
                 >
 
             </android.support.v7.widget.AppCompatTextView>
@@ -37,24 +36,24 @@
                 android:layout_height="wrap_content"
                 android:text="Students: 9"
                 app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tv_route"
+                app:layout_constraintTop_toBottomOf="@+id/tv_trip"
                 android:id="@+id/tv_students_count"
                 >
 
             </android.support.v7.widget.AppCompatTextView>
 
-            <Button
-                android:id="@+id/btn_mark"
-                android:layout_width="wrap_content"
-                android:layout_height="36dp"
-                android:background="@drawable/ic_button_sm"
-                android:paddingLeft="8dp"
-                android:paddingRight="8dp"
-                android:text="@string/mark_attendance"
-                android:textColor="@android:color/white"
-                app:layout_constraintBottom_toTopOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="parent" />
+            <ImageView
+                android:layout_width="40dp"
+                android:id="@+id/iv_more_details"
+                android:layout_height="40dp"
+                android:padding="5dp"
+                android:src="@drawable/ic_action_pop_menu"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                >
+
+            </ImageView>
 
         </android.support.constraint.ConstraintLayout>
 

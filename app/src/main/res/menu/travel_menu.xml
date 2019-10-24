@@ -2,10 +2,10 @@
 <menu xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:android="http://schemas.android.com/apk/res/android">
     <item android:title="Morning Attendance"
-        android:icon="@drawable/ic_action_check"
+        android:icon="@drawable/ic_wb_sunny_black_24dp"
         android:id="@+id/morning_mark"/>
 
     <item android:title="Evening Attendance"
-        android:icon="@drawable/ic_action_check"
+        android:icon="@drawable/ic_brightness_3_black_24dp"
         android:id="@+id/evening_mark"/>
 </menu>

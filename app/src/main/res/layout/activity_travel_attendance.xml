@@ -40,9 +40,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/pr"
         android:visibility="gone"
-        >
-
-    </ProgressBar>
+        android:layout_gravity="center" />
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/fab"

@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 
 import com.eryxlabs.fiderides.R;
@@ -37,54 +38,27 @@ public class TravelStudentsAdapter extends RecyclerView.Adapter<TravelStudentsAd
 
         TravelRecord current = travelRecords.get(i);
         travelStudentHolder.student.setText(current.getStudent().getFullName());
-        travelStudentHolder.absent.setOnClickListener(v->{
+        travelStudentHolder.collection.setOnCheckedChangeListener((radioGroup, id) -> {
             if(this.kind.equals("to")){
-                current.setPicked(0);
+                current.setPickedHome((id == R.id.rb_travel_present) ? 1 : 0);
             }else{
-                current.setDropped(0);
+                current.setDroppedHome((id == R.id.rb_travel_present) ? 1 : 0);
             }
-            notifyAsync(i);
-
-        });
-
-        travelStudentHolder.present.setOnClickListener(v->{
-            if(this.kind.equals("to")){
-                current.setPicked(1);
-            }else{
-                current.setDropped(1);
-            }
-
             notifyAsync(i);
         });
 
         if(this.kind.equals("to")){
-            if(current.getPicked()==0){
-                travelStudentHolder.present.setChecked(false);
-                travelStudentHolder.absent.setChecked(true);
-            }else{
-                travelStudentHolder.present.setChecked(true);
-                travelStudentHolder.absent.setChecked(false);
-            }
+            travelStudentHolder.collection.check((current.getPickedHome()==0) ? R.id.rb_travel_absent : R.id.rb_travel_present);
         }else{
             travelStudentHolder.present.setText("Dropped");
             travelStudentHolder.absent.setText("En-route");
-            if(current.getDropped()==0){
-                travelStudentHolder.present.setChecked(false);
-                travelStudentHolder.absent.setChecked(true);
-            }else{
-                travelStudentHolder.present.setChecked(true);
-                travelStudentHolder.absent.setChecked(false);
-            }
+            travelStudentHolder.collection.check((current.getDroppedHome()==0) ? R.id.rb_travel_absent : R.id.rb_travel_present);
         }
-
-
-
     }
 
     public void notifyAsync(int p){
         new Handler().post(() -> notifyItemChanged(p));
     }
-
 
     @Override
     public int getItemCount() {
@@ -101,14 +75,14 @@ public class TravelStudentsAdapter extends RecyclerView.Adapter<TravelStudentsAd
     }
 
     public class TravelStudentHolder extends RecyclerView.ViewHolder{
-
         private TextView student;
+        private RadioGroup collection;
         public RadioButton absent;
         public RadioButton present;
         public TravelStudentHolder(@NonNull View itemView) {
             super(itemView);
-
             student = itemView.findViewById(R.id.tv_student_details);
+            collection = itemView.findViewById(R.id.rg_attendance);
             absent = itemView.findViewById(R.id.rb_travel_absent);
             present = itemView.findViewById(R.id.rb_travel_present);
         }

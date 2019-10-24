@@ -141,4 +141,7 @@
     <string name="menu_assessments">Assessments</string>
     <string name="reason">Reason</string>
     <string name="title_activity_travel_attendance">TravelAttendanceActivity</string>
+    <string name="title_activity_trip">TripActivity</string>
+    <string name="no_routes_yet">No Routes Yet</string>
+    <string name="no_trips_yet">No Trips Yet</string>
 </resources>

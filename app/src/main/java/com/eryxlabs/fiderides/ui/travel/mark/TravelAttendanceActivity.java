@@ -12,6 +12,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ProgressBar;
+import android.widget.Toast;
 
 import com.eryxlabs.fiderides.R;
 import com.eryxlabs.fiderides.ui.travel.TravelViewModel;
@@ -47,7 +48,7 @@ public class TravelAttendanceActivity extends AppCompatActivity {
         list.setAdapter(travelStudentsAdapter);
 
         travelViewModel = ViewModelProviders.of(this).get(TravelViewModel.class);
-        travelViewModel.loadTravelStudents(kind,road_id);
+        travelViewModel.loadTravelStudents(road_id);
 
         travelViewModel.records.observe(this,travelRecords -> {
             travelStudentsAdapter.updateData(travelRecords);
@@ -56,22 +57,20 @@ public class TravelAttendanceActivity extends AppCompatActivity {
         travelViewModel.monitor.observe(this,networkResponse -> {
             if (networkResponse!=null){
                 if (networkResponse.is_loading){
-
                     pr.setVisibility(View.VISIBLE);
                 }else{
-
                     pr.setVisibility(View.GONE);
                 }
 
                 if (networkResponse.message!=null){
+                    if (networkResponse.message.equals("Updated")){
+                        Toast.makeText(this, "Updated", Toast.LENGTH_SHORT).show();
+                        onBackPressed();
+                    }else{
+                        Snackbar.make(pr,networkResponse.message,Snackbar.LENGTH_SHORT).show();
+                    }
 
-
-                    Snackbar.make(pr,networkResponse.message,Snackbar.LENGTH_SHORT).show();
                 }
-
-
-
-
             }
         });
 

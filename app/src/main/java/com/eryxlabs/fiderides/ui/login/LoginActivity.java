@@ -16,12 +16,7 @@ import android.widget.Toast;
 import com.eryxlabs.fiderides.MainActivity;
 import com.eryxlabs.fiderides.R;
 import com.eryxlabs.fiderides.models.UserToken;
-import com.eryxlabs.fiderides.utils.ApiClient;
 import com.eryxlabs.fiderides.utils.Cache;
-
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
 public class LoginActivity extends AppCompatActivity {
 

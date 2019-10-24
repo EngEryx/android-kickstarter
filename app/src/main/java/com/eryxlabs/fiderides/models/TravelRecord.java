@@ -16,11 +16,17 @@ public class TravelRecord {
     @SerializedName("student_id")
     private Integer studentId;
 
-    @SerializedName("picked")
-    private Integer picked;
+    @SerializedName("picked_home")
+    private Integer pickedHome;
 
-    @SerializedName("dropped")
-    private Integer dropped;
+    @SerializedName("dropped_home")
+    private Integer droppedHome;
+
+    @SerializedName("picked_school")
+    private Integer pickedSchool;
+
+    @SerializedName("dropped_school")
+    private Integer droppedSchool;
 
     @SerializedName("date")
     private String date;
@@ -42,6 +48,9 @@ public class TravelRecord {
 
     @SerializedName("updated_at")
     private String updatedAt;
+
+    public TravelRecord() {
+    }
 
     public Integer getId() {
         return id;
@@ -73,22 +82,6 @@ public class TravelRecord {
 
     public void setStudentId(Integer studentId) {
         this.studentId = studentId;
-    }
-
-    public Integer getPicked() {
-        return picked;
-    }
-
-    public void setPicked(Integer picked) {
-        this.picked = picked;
-    }
-
-    public Integer getDropped() {
-        return dropped;
-    }
-
-    public void setDropped(Integer dropped) {
-        this.dropped = dropped;
     }
 
     public String getDate() {
@@ -141,5 +134,37 @@ public class TravelRecord {
 
     public Student getStudent() {
         return student;
+    }
+
+    public Integer getDroppedSchool() {
+        return droppedSchool;
+    }
+
+    public void setDroppedSchool(Integer droppedSchool) {
+        this.droppedSchool = droppedSchool;
+    }
+
+    public Integer getPickedSchool() {
+        return pickedSchool;
+    }
+
+    public void setPickedSchool(Integer pickedSchool) {
+        this.pickedSchool = pickedSchool;
+    }
+
+    public Integer getDroppedHome() {
+        return droppedHome;
+    }
+
+    public Integer getPickedHome() {
+        return pickedHome;
+    }
+
+    public void setDroppedHome(Integer droppedHome) {
+        this.droppedHome = droppedHome;
+    }
+
+    public void setPickedHome(Integer pickedHome) {
+        this.pickedHome = pickedHome;
     }
 }

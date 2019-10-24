@@ -23,13 +23,21 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
+        <ProgressBar
+            android:id="@+id/pb_travel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:visibility="gone"
+            android:layout_margin="16dp"/>
+
         <TextView
             android:id="@+id/text_travel"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom|center_vertical|center_horizontal"
             android:gravity="center_vertical|center_horizontal|center"
-            android:text="@string/no_classes_yet"
+            android:text="@string/no_trips_yet"
             android:textAlignment="center"
             android:textColor="@color/secondary_text"
             android:textSize="18sp"

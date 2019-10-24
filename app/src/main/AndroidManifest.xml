@@ -14,18 +14,21 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".ui.travel.trip.TripActivity"
+            android:label="Trip Route"
+            android:theme="@style/AppTheme"></activity>
+        <activity
             android:name=".ui.travel.mark.TravelAttendanceActivity"
             android:label="Travel Attendance"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
-
-        <activity android:name=".ui.assessment.StudentsGroupActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".ui.assessment.StudentsGroupActivity"
             android:label="Mark"
-            android:theme="@style/AppTheme2"></activity>
+            android:theme="@style/AppTheme2" />
         <activity
             android:name=".ui.assessment.StudentsIndividualActivity"
             android:label="Mark"
-            android:theme="@style/AppTheme2">
-        </activity>
+            android:theme="@style/AppTheme2"></activity>
         <activity
             android:name=".ui.attendance.mark.ClassAttendanceActivity"
             android:label="@string/mark_attendance"

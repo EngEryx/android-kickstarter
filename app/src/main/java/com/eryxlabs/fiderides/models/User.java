@@ -10,46 +10,34 @@ public class User implements Serializable {
 
     @SerializedName("id")
     @Expose
-    private int id;
+    private Integer id;
     @SerializedName("first_name")
     @Expose
     private String firstName;
     @SerializedName("last_name")
     @Expose
     private String lastName;
-    @SerializedName("phone")
-    @Expose
-    private String phone;
     @SerializedName("email")
     @Expose
     private String email;
-    @SerializedName("avatar_type")
+    @SerializedName("notification_email_sent")
     @Expose
-    private String avatarType;
-    @SerializedName("avatar_location")
+    private Integer notificationEmailSent;
+    @SerializedName("notification_tag_sent")
     @Expose
-    private Object avatarLocation;
-    @SerializedName("person_type")
+    private Integer notificationTagSent;
+    @SerializedName("status")
     @Expose
-    private Object personType;
-    @SerializedName("person_id")
-    @Expose
-    private Object personId;
-    @SerializedName("password_changed_at")
-    @Expose
-    private Object passwordChangedAt;
-    @SerializedName("active")
-    @Expose
-    private int active;
+    private Integer status;
     @SerializedName("confirmation_code")
     @Expose
     private String confirmationCode;
     @SerializedName("confirmed")
     @Expose
-    private int confirmed;
-    @SerializedName("timezone")
+    private Integer confirmed;
+    @SerializedName("complete")
     @Expose
-    private String timezone;
+    private Boolean complete;
     @SerializedName("created_at")
     @Expose
     private String createdAt;
@@ -62,12 +50,21 @@ public class User implements Serializable {
     @SerializedName("full_name")
     @Expose
     private String fullName;
+    @SerializedName("name")
+    @Expose
+    private String name;
+    @SerializedName("picture")
+    @Expose
+    private String picture;
+    @SerializedName("is_driver")
+    @Expose
+    private Boolean isDriver;
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -87,14 +84,6 @@ public class User implements Serializable {
         this.lastName = lastName;
     }
 
-    public String getPhone() {
-        return phone;
-    }
-
-    public void setPhone(String phone) {
-        this.phone = phone;
-    }
-
     public String getEmail() {
         return email;
     }
@@ -103,52 +92,28 @@ public class User implements Serializable {
         this.email = email;
     }
 
-    public String getAvatarType() {
-        return avatarType;
+    public Integer getNotificationEmailSent() {
+        return notificationEmailSent;
     }
 
-    public void setAvatarType(String avatarType) {
-        this.avatarType = avatarType;
+    public void setNotificationEmailSent(Integer notificationEmailSent) {
+        this.notificationEmailSent = notificationEmailSent;
     }
 
-    public Object getAvatarLocation() {
-        return avatarLocation;
+    public Integer getNotificationTagSent() {
+        return notificationTagSent;
     }
 
-    public void setAvatarLocation(Object avatarLocation) {
-        this.avatarLocation = avatarLocation;
+    public void setNotificationTagSent(Integer notificationTagSent) {
+        this.notificationTagSent = notificationTagSent;
     }
 
-    public Object getPersonType() {
-        return personType;
+    public Integer getStatus() {
+        return status;
     }
 
-    public void setPersonType(Object personType) {
-        this.personType = personType;
-    }
-
-    public Object getPersonId() {
-        return personId;
-    }
-
-    public void setPersonId(Object personId) {
-        this.personId = personId;
-    }
-
-    public Object getPasswordChangedAt() {
-        return passwordChangedAt;
-    }
-
-    public void setPasswordChangedAt(Object passwordChangedAt) {
-        this.passwordChangedAt = passwordChangedAt;
-    }
-
-    public int getActive() {
-        return active;
-    }
-
-    public void setActive(int active) {
-        this.active = active;
+    public void setStatus(Integer status) {
+        this.status = status;
     }
 
     public String getConfirmationCode() {
@@ -159,20 +124,20 @@ public class User implements Serializable {
         this.confirmationCode = confirmationCode;
     }
 
-    public int getConfirmed() {
+    public Integer getConfirmed() {
         return confirmed;
     }
 
-    public void setConfirmed(int confirmed) {
+    public void setConfirmed(Integer confirmed) {
         this.confirmed = confirmed;
     }
 
-    public String getTimezone() {
-        return timezone;
+    public Boolean getComplete() {
+        return complete;
     }
 
-    public void setTimezone(String timezone) {
-        this.timezone = timezone;
+    public void setComplete(Boolean complete) {
+        this.complete = complete;
     }
 
     public String getCreatedAt() {
@@ -207,4 +172,27 @@ public class User implements Serializable {
         this.fullName = fullName;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getPicture() {
+        return picture;
+    }
+
+    public void setPicture(String picture) {
+        this.picture = picture;
+    }
+
+    public Boolean getIsDriver() {
+        return isDriver;
+    }
+
+    public void setIsDriver(Boolean isDriver) {
+        this.isDriver = isDriver;
+    }
 }
